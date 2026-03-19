@@ -53,7 +53,7 @@ const RoleText = ({ role, currentKey }) => {
   return (
     <motion.p
       key={currentKey}
-      className="text-xl md:text-2xl text-accent-olive/80 font-medium whitespace-nowrap absolute flex tracking-normal"
+      className="text-xl md:text-2xl text-accent-olive font-medium italic whitespace-nowrap absolute flex tracking-normal"
     >
       {role.split('').map((char, i) => (
         <motion.span
@@ -107,7 +107,30 @@ export default function Hero() {
   };
 
   return (
-    <section className="flex flex-col items-start justify-center w-full pt-16 md:pt-24 pb-8 md:pb-16 border-b border-border/50">
+    <section className="relative flex flex-col items-start justify-center w-full pt-16 md:pt-24 pb-8 md:pb-16 border-b border-border/50">
+      
+      {/* Decorative Arrow pointing to Header */}
+      <div className="hidden md:block absolute top-[10%] xl:top-[0%] right-[5%] xl:right-[5%] w-24 h-28 xl:w-32 xl:h-36 opacity-70 pointer-events-none z-10 text-foreground overflow-visible">
+        <svg width="100%" height="100%" viewBox="0 0 125 156" fill="none" xmlns="http://www.w3.org/2000/svg" className="overflow-visible">
+          {/* Main solid arrow draw */}
+          <motion.path 
+            d="M1.50024 142.982C13.0837 151.149 38.6502 163.032 48.2502 145.232C57.8502 127.432 43.9167 102.816 35.7502 92.7322C28.0837 83.5657 22.8502 65.2322 63.2502 65.2322C113.75 65.2322 114.75 38.9822 114.75 6.48218M104.25 14.9822L114.75 2.48218L123.25 14.9822" 
+            stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"
+            initial={{ pathLength: 0, opacity: 1 }}
+            animate={{
+              pathLength: [0, 1, 1, 0, 0],
+              opacity: [1, 1, 0, 0, 0],
+            }}
+            transition={{
+              duration: 3.5,
+              times: [0, 0.3, 0.35, 0.36, 1],
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        </svg>
+      </div>
+
       <motion.div
         variants={container}
         initial="hidden"
@@ -126,7 +149,7 @@ export default function Hero() {
           <h1 className="text-4xl md:text-5xl font-serif font-light tracking-tight text-foreground">
             {hero.name}
           </h1>
-          <div className="h-8 md:h-10 relative overflow-hidden flex items-center w-full perspective-[1000px]">
+          <div className="h-8 md:h-10 relative overflow-hidden flex items-center w-full perspective-[1000px] mask-[linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]">
             <AnimatePresence mode="popLayout">
               <RoleText 
                 key={currentRoleIndex} 
@@ -138,7 +161,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.div variants={item} className="group text-base md:text-lg text-muted-light leading-loose mt-2 font-normal cursor-default">
-          I'm a <Highlight colorClass="bg-slate-400">Computer Science student</Highlight> working with{' '}
+          I'm a <Highlight colorClass="bg-slate-600">Computer Science student</Highlight> working with{' '}
           <Highlight colorClass="bg-blue-400">
             <img src="/icons/Python.svg" alt="Python" className="w-[16px] h-[16px] relative -top-px" /> Python
           </Highlight>
