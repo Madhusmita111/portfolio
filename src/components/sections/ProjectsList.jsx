@@ -40,16 +40,31 @@ export default function ProjectsList() {
           {projects.map((project, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
-              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: idx * 0.06, ease: [0.22, 1, 0.36, 1] }}
               onMouseEnter={() => setHoveredProject(project)}
               onMouseLeave={() => setHoveredProject(null)}
               onClick={() => setSelectedProject(project)}
-              className="flex items-center justify-between py-5 md:py-8 border-b border-border/50 group cursor-pointer transition-all px-3 md:px-6 -mx-3 md:-mx-6 hover:bg-[#0d0e0a] hover:border-transparent rounded-2xl"
+              className={`relative z-0 flex items-center justify-between py-5 md:py-8 border-b transition-all px-3 md:px-6 -mx-3 md:-mx-6 rounded-2xl group cursor-pointer ${
+                hoveredProject === project ? 'border-transparent' : 'border-border/50'
+              }`}
             >
-              <div className="flex items-center gap-3 md:gap-6">
+              <AnimatePresence>
+                {hoveredProject === project && (
+                  <motion.div
+                    layoutId="projectHoverLayer"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    className="absolute inset-0 bg-[#0d0e0a] rounded-2xl -z-10"
+                  />
+                )}
+              </AnimatePresence>
+
+              <div className="relative z-10 flex items-center gap-3 md:gap-6 pointer-events-none">
                 <span className="text-2xl font-serif text-accent-matcha tabular-nums w-6 shrink-0 hidden md:block group-hover:text-neutral-500 transition-colors duration-300">
                   {String(idx + 1).padStart(2, '0')}
                 </span>
@@ -63,7 +78,7 @@ export default function ProjectsList() {
                   </span>
                 </div>
               </div>
-              <div className="flex items-center gap-4 md:gap-8 shrink-0">
+              <div className="relative z-10 flex items-center gap-4 md:gap-8 shrink-0 pointer-events-none">
                 <span className="text-sm md:text-base text-muted font-medium font-serif group-hover:text-neutral-400 transition-colors">
                   {project.date}
                 </span>
