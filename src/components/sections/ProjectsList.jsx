@@ -135,65 +135,65 @@ export default function ProjectsList() {
               animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
               exit={{ opacity: 0, y: 30, scale: 0.95, filter: 'blur(8px)' }}
               transition={{ type: "spring", damping: 25, stiffness: 280 }}
-              className="relative w-full max-w-3xl glass-card shadow-olive-lift rounded-3xl overflow-hidden z-10 flex flex-col max-h-[90vh]"
+              className="relative w-full max-w-2xl glass-card shadow-olive-lift rounded-3xl overflow-hidden z-10 flex flex-col max-h-[85vh] md:max-h-[80vh]"
             >
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 md:top-6 md:right-6 p-2 bg-surface/65 hover:bg-surface backdrop-blur-md rounded-full text-foreground transition-colors z-20 border border-border-accent/60"
+                className="absolute top-4 right-4 md:top-5 md:right-5 p-2 bg-surface/80 hover:bg-surface backdrop-blur-md rounded-full text-foreground transition-colors z-20 border border-border-accent/60 shadow-sm"
               >
-                <X weight="bold" className="w-5 h-5" />
+                <X weight="bold" className="w-4 h-4 md:w-5 md:h-5" />
               </button>
 
-              <div className="w-full h-64 md:h-80 shrink-0 relative bg-surface-matcha/60">
+              {/* Image Section */}
+              <div className="w-full h-48 md:h-64 shrink-0 relative bg-surface-matcha/30">
                 <img
                   src={selectedProject.image}
                   alt={selectedProject.title}
-                  className="w-full h-full object-cover"
+                  className="absolute inset-0 w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-[linear-gradient(to_top,var(--modal-overlay-strong),var(--modal-overlay-soft),transparent)]" />
+                <div className="absolute inset-0 bg-[linear-gradient(to_top,var(--modal-overlay-strong),transparent)]" />
               </div>
 
-              <div className="flex flex-col gap-6 p-6 md:p-10 overflow-y-auto">
-                <div className="flex flex-col gap-2">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-3xl md:text-5xl font-serif font-medium text-foreground">
-                      {selectedProject.title}
-                    </h3>
-                  </div>
-                  <span className="text-sm font-medium text-muted">{selectedProject.date}</span>
+              {/* Content Section */}
+              <div className="flex-1 flex flex-col p-5 md:p-7 overflow-y-auto custom-scrollbar">
+                <div className="flex flex-col gap-1 md:gap-1.5 mb-4 pr-10 md:pr-14">
+                  <h3 className="text-xl md:text-2xl lg:text-3xl font-serif font-medium text-foreground tracking-tight leading-tight">
+                    {selectedProject.title}
+                  </h3>
+                  <span className="text-xs md:text-sm font-medium text-accent-olive/80">{selectedProject.date}</span>
                 </div>
 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5 md:gap-2 mb-4">
                   {selectedProject.tech.map((t, i) => (
-                    <span key={i} className="text-sm font-medium bg-surface-chip text-foreground px-3 py-1.5 rounded-full border border-border-accent/55">
+                    <span key={i} className="text-[11px] md:text-sm font-medium bg-surface-chip text-foreground px-2.5 md:px-3 py-1 md:py-1.5 rounded-full border border-border-accent/55 shadow-sm">
                       {t}
                     </span>
                   ))}
                 </div>
 
-                <div className="w-full h-px bg-border-accent/80 my-2" />
+                <div className="w-full border-t border-border-accent/80 my-2" />
 
-                <div className="flex flex-col gap-4">
-                  <h4 className="text-lg font-medium text-foreground">About the Project</h4>
-                  <ul className="flex flex-col gap-3">
+                <div className="flex flex-col gap-2 md:gap-3 mt-3 md:mt-4">
+                  <h4 className="text-sm md:text-base font-medium text-foreground tracking-tight">About the Project</h4>
+                  <ul className="flex flex-col gap-2 md:gap-3">
                     {selectedProject.points.map((point, i) => (
-                      <li key={i} className="text-base text-muted leading-relaxed flex items-start gap-3">
-                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                      <li key={i} className="text-xs md:text-sm text-muted-light leading-relaxed flex items-start gap-2.5 md:gap-3">
+                        <span className="mt-1.5 w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-accent-olive shrink-0" />
                         <span>{point}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="flex flex-wrap gap-4 mt-8 pt-6 border-t border-border">
+                <div className="flex flex-wrap gap-2.5 md:gap-3 mt-6 border-t border-border/50 pt-4 md:pt-5">
                   {selectedProject.liveLink && selectedProject.liveLink !== '#' && (
-                    <a href={selectedProject.liveLink} target="_blank" rel="noopener noreferrer" className="px-6 py-3 bg-accent-olive text-white rounded-full font-medium text-sm hover:scale-105 hover:bg-accent-matcha transition-all flex items-center gap-2">
-                      Visit Site <ArrowUpRight weight="bold" />
+                    <a href={selectedProject.liveLink} target="_blank" rel="noopener noreferrer" className="px-4 py-2 mt-auto md:px-5 md:py-2.5 bg-accent-olive text-white rounded-full font-medium text-xs md:text-sm hover:scale-105 hover:bg-accent-matcha transition-all flex items-center gap-1.5 md:gap-2 shadow-sm">
+                      Visit Site <ArrowUpRight weight="bold" className="w-3 h-3 md:w-4 md:h-4" />
                     </a>
                   )}
                   {selectedProject.githubLink && selectedProject.githubLink !== '#' && (
-                    <a href={selectedProject.githubLink} target="_blank" rel="noopener noreferrer" className="px-6 py-3 bg-surface border border-border-accent/70 text-foreground hover:bg-surface-matcha rounded-full font-medium text-sm transition-colors flex items-center gap-2">
-                      View Code <GithubLogo weight="fill" />
+                    <a href={selectedProject.githubLink} target="_blank" rel="noopener noreferrer" className="px-4 py-2 mt-auto md:px-5 md:py-2.5 bg-surface border border-border-accent/70 text-foreground hover:bg-surface-matcha rounded-full font-medium text-xs md:text-sm transition-colors flex items-center gap-1.5 md:gap-2 shadow-sm">
+                      View Code <GithubLogo weight="fill" className="w-3 h-3 md:w-4 md:h-4" />
                     </a>
                   )}
                 </div>
