@@ -1,0 +1,122 @@
+/* src/styles/theme.css */
+
+/* Sage / Olive palette using OKLCH */
+:root {
+  /* Background colors */
+  --bg-primary: oklch(99.945% 0.00252 107.135);
+  --bg-secondary: #ffffff;
+  --bg-tertiary: oklch(93% 0.015 107.3);
+
+  /* Text colors */
+  --text-primary: oklch(28% 0.015 107.3);
+  --text-secondary: oklch(45% 0.02 107.3);
+  --text-tertiary: oklch(65% 0.018 107.3);
+
+  /* Border colors */
+  --border-light: oklch(88% 0.015 107.3);
+  --border-medium: oklch(80% 0.02 107.3);
+
+  /* Accent colors */
+  --accent-primary: oklch(58% 0.031 107.3);
+  --accent-hover: oklch(50% 0.035 107.3);
+  --accent-matcha: oklch(64% 0.043 131);
+  --accent-olive-deep: oklch(41% 0.024 112);
+
+  /* UI elements */
+  --pill-bg: oklch(92% 0.02 107.3);
+  --panel-matcha-top: oklch(99% 0.008 106);
+  --panel-matcha-bottom: oklch(96.6% 0.017 111);
+  --surface-matcha-soft: oklch(97.2% 0.013 110);
+  --surface-matcha-chip: oklch(98.2% 0.01 108);
+
+  /* Structural accents */
+  --border-accent-soft: oklch(84% 0.021 109);
+  --border-accent-medium: oklch(78% 0.028 111);
+
+  /* Glow tones */
+  --glow-matcha-soft: oklch(84% 0.041 118 / 0.32);
+  --glow-matcha-medium: oklch(80% 0.043 118 / 0.38);
+  --glow-matcha-trail: oklch(74% 0.036 114 / 0.2);
+  --glow-clear: oklch(100% 0 0 / 0);
+
+  /* Media overlays */
+  --media-overlay-strong: oklch(32% 0.019 110 / 0.33);
+  --media-overlay-soft: oklch(32% 0.019 110 / 0.03);
+  --modal-overlay-strong: oklch(34% 0.021 111 / 0.42);
+  --modal-overlay-soft: oklch(34% 0.021 111 / 0.08);
+
+  /* Shadows */
+  --shadow-olive-soft: 0 10px 30px oklch(37% 0.03 110 / 0.12);
+  --shadow-olive-lift: 0 16px 40px oklch(35% 0.031 111 / 0.14);
+
+  /* Optional highlight */
+  --accent-soft: oklch(94% 0.018 107.3);
+
+  /* === NEW: Ambient Background Orbs === */
+  --orb-olive: oklch(78% 0.045 118 / 0.18);
+  --orb-matcha: oklch(82% 0.05 131 / 0.14);
+  --orb-sage: oklch(86% 0.038 107 / 0.12);
+
+  /* === NEW: Glass effects === */
+  --glass-bg: oklch(99% 0.005 107 / 0.55);
+  --glass-border: oklch(88% 0.02 109 / 0.5);
+  --glass-glow: oklch(72% 0.04 118 / 0.15);
+
+  /* === NEW: Timeline === */
+  --timeline-line: oklch(78% 0.03 118 / 0.35);
+  --timeline-dot: oklch(58% 0.04 118);
+  --timeline-dot-glow: oklch(64% 0.05 131 / 0.4);
+
+  /* === NEW: Card shimmer === */
+  --shimmer-start: oklch(90% 0.02 107 / 0);
+  --shimmer-mid: oklch(90% 0.03 118 / 0.25);
+  --shimmer-end: oklch(90% 0.02 107 / 0);
+
+  /* === NEW: Aurora === */
+  --aurora-1: oklch(72% 0.05 131);
+  --aurora-2: oklch(64% 0.04 118);
+  --aurora-3: oklch(78% 0.045 107);
+  --aurora-4: oklch(68% 0.05 140);
+}
+
+/* === Keyframes === */
+@keyframes float-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(60px, -40px) scale(1.05); }
+  50% { transform: translate(-30px, 50px) scale(0.95); }
+  75% { transform: translate(40px, 20px) scale(1.02); }
+}
+
+@keyframes float-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-70px, 30px) scale(1.08); }
+  66% { transform: translate(50px, -60px) scale(0.92); }
+}
+
+@keyframes float-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  20% { transform: translate(30px, 60px) scale(1.04); }
+  40% { transform: translate(-50px, -20px) scale(0.96); }
+  60% { transform: translate(60px, -50px) scale(1.06); }
+  80% { transform: translate(-40px, 40px) scale(0.98); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes aurora-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes draw-line {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.15); }
+}
