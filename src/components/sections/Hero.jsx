@@ -108,28 +108,6 @@ export default function Hero() {
 
   return (
     <section className="relative flex flex-col items-start justify-center w-full pt-16 md:pt-24 pb-8 md:pb-16 border-b border-border/50">
-      
-      {/* Decorative Arrow pointing to Header */}
-      <div className="hidden md:block absolute top-[10%] xl:top-[0%] right-[5%] xl:right-[5%] w-24 h-28 xl:w-32 xl:h-36 opacity-70 pointer-events-none z-10 text-foreground overflow-visible">
-        <svg width="100%" height="100%" viewBox="0 0 125 156" fill="none" xmlns="http://www.w3.org/2000/svg" className="overflow-visible">
-          {/* Main solid arrow draw */}
-          <motion.path 
-            d="M1.50024 142.982C13.0837 151.149 38.6502 163.032 48.2502 145.232C57.8502 127.432 43.9167 102.816 35.7502 92.7322C28.0837 83.5657 22.8502 65.2322 63.2502 65.2322C113.75 65.2322 114.75 38.9822 114.75 6.48218M104.25 14.9822L114.75 2.48218L123.25 14.9822" 
-            stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"
-            initial={{ pathLength: 0, opacity: 1 }}
-            animate={{
-              pathLength: [0, 1, 1, 0, 0],
-              opacity: [1, 1, 0, 0, 0],
-            }}
-            transition={{
-              duration: 3.5,
-              times: [0, 0.3, 0.35, 0.36, 1],
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-        </svg>
-      </div>
 
       <motion.div
         variants={container}
