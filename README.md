@@ -1,7 +1,3 @@
-# Premium Data Science Portfolio
-
-A minimalist, highly interactive portfolio designed for data science and analytics professionals. Built with React, Tailwind CSS v4, and Framer Motion, it features sophisticated Awwwards-inspired animations, glassmorphism UI elements, and a responsive grid layout.
-
 ![Portfolio Preview](./public/projects/portfolio-preview.png)
 
 ## 🚀 Features
