@@ -36,7 +36,7 @@ export default function ProjectsList() {
         className="flex flex-col w-full relative pt-4 rounded-3xl px-3 md:px-6"
         onMouseMove={handleMouseMove}
       >
-        <div className="flex flex-col border-t border-border/40">
+        <div className="flex flex-col gap-2">
           {projects.map((project, idx) => (
             <motion.div
               key={idx}
@@ -47,7 +47,7 @@ export default function ProjectsList() {
               onMouseEnter={() => setHoveredProject(project)}
               onMouseLeave={() => setHoveredProject(null)}
               onClick={() => setSelectedProject(project)}
-              className={`relative z-0 flex items-center justify-between py-5 md:py-8 border-b transition-all px-3 md:px-6 -mx-3 md:-mx-6 rounded-2xl group cursor-pointer ${
+              className={`relative z-0 flex items-center justify-between py-5 md:py-8 border rounded-md transition-all px-3 md:px-6 -mx-3 md:-mx-6 group cursor-pointer bg-surface-matcha ${
                 hoveredProject === project ? 'border-transparent' : 'border-border/50'
               }`}
             >
@@ -59,13 +59,13 @@ export default function ProjectsList() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                    className="absolute inset-0 bg-foreground rounded-2xl -z-10"
+                    className="absolute inset-0 bg-foreground rounded-md -z-10"
                   />
                 )}
               </AnimatePresence>
 
               <div className="relative z-10 flex items-center gap-3 md:gap-6 pointer-events-none">
-                <span className="text-2xl font-serif text-accent-matcha tabular-nums w-6 shrink-0 hidden md:block group-hover:text-background transition-colors duration-300 opacity-60 group-hover:opacity-100">
+                <span className="text-2xl font-serif text-accent-matcha tabular-nums w-6 shrink-0 hidden md:block group-hover:text-background transition-colors duration-300">
                   {String(idx + 1).padStart(2, '0')}
                 </span>
                 <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-3">
@@ -104,7 +104,7 @@ export default function ProjectsList() {
             exit={{ opacity: 0, scale: 0.85, rotate: 4, filter: 'blur(8px)' }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
             style={{ x: springX, y: springY }}
-            className="fixed top-0 left-0 pointer-events-none z-40 w-[300px] h-[200px] rounded-2xl overflow-hidden shadow-olive-lift border border-border-accent/70 bg-surface hidden md:block"
+            className="fixed top-0 left-0 pointer-events-none z-40 w-[350px] h-[200px] overflow-hidden shadow-olive-lift bg-surface hidden md:block"
           >
             <div className="absolute inset-0 bg-[linear-gradient(to_top,var(--media-overlay-strong),var(--media-overlay-soft))] z-10" />
             <img
@@ -165,7 +165,7 @@ export default function ProjectsList() {
 
                 <div className="flex flex-wrap gap-1.5 md:gap-2 mb-4">
                   {selectedProject.tech.map((t, i) => (
-                    <span key={i} className="text-[11px] md:text-sm font-medium bg-surface-chip text-foreground px-2.5 md:px-3 py-1 md:py-1.5 rounded-full border border-border-accent/55 shadow-sm">
+                    <span key={i} className="text-[11px] md:text-sm font-medium bg-surface-chip text-foreground px-2.5 md:px-3 py-1 md:py-1.5 rounded-full border border-border-accent/55">
                       {t}
                     </span>
                   ))}

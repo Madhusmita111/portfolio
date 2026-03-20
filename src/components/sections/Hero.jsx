@@ -129,10 +129,10 @@ export default function Hero() {
           </h1>
           <div className="h-8 md:h-10 relative overflow-hidden flex items-center w-full perspective-[1000px] mask-[linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]">
             <AnimatePresence mode="popLayout">
-              <RoleText 
-                key={currentRoleIndex} 
-                role={hero.roles[currentRoleIndex]} 
-                currentKey={currentRoleIndex} 
+              <RoleText
+                key={currentRoleIndex}
+                role={hero.roles[currentRoleIndex]}
+                currentKey={currentRoleIndex}
               />
             </AnimatePresence>
           </div>
