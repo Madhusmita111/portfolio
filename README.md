@@ -1,6 +1,6 @@
 ![Portfolio Preview](./public/projects/portfolio-preview.png)
 
-## 🚀 Features
+##  Features
 
 - **Cinematic Animations**: Staggered 3D text flips, smooth scroll reveals, and magnetic buttons powered by Framer Motion.
 - **Glassmorphism Aesthetic**: Deep blurring, frosted glass panels, and ambient background orbs.
@@ -11,7 +11,7 @@
 - **Responsive Design**: Flawless scaling from mobile to 4K displays.
 - **Data-Driven Architecture**: All portfolio content (projects, skills, resume) is centrally managed in `src/data/portfolioData.js`.
 
-## 🛠️ Built With
+##  Built With
 
 - **React 18**
 - **Vite**
@@ -19,7 +19,7 @@
 - **Framer Motion** (Production-ready declarative animations)
 - **Phosphor Icons**
 
-## 📦 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -46,7 +46,7 @@
 
 4. Open your browser and navigate to `http://localhost:5173`.
 
-## 📂 Project Structure
+##  Project Structure
 
 ```text
 ├── public/                 # Static assets (images, icons, CV pdf)
@@ -59,13 +59,13 @@
 │   └── main.jsx            # Entry point
 ```
 
-## 🎨 Customization
+##  Customization
 
 To personalize the portfolio:
 1. Open `src/data/portfolioData.js`.
 2. Update the `hero`, `about`, `skills`, `projects`, `education`, `certificates`, and `awards` objects with your own information.
 3. Replace the images and icons in the `public/` directory with your own assets.
 
-## 📄 License
+##  License
 
 This project is open-source and available under the [MIT License](LICENSE).
