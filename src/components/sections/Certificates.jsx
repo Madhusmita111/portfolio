@@ -45,7 +45,7 @@ function CertificateCard({ cert, index }) {
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
       style={{ rotateX, rotateY, transformPerspective: 600 }}
-      className="group relative rounded-2xl p-px cursor-default will-change-transform bg-accent-matcha/5"
+      className="group relative rounded-2xl p-px cursor-default will-change-transform bg-accent-matcha/10"
     >
       <div className="absolute inset-0 rounded-2xl shimmer-border opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 

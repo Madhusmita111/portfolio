@@ -3,9 +3,9 @@
 /* Sage / Olive palette using OKLCH */
 :root {
   /* Background colors */
-  --bg-primary: oklch(99.945% 0.00252 107.135);
-  --bg-secondary: #ffffff;
-  --bg-tertiary: oklch(93% 0.015 107.3);
+  --bg-primary: oklch(99.4% 0.004 107.135);
+  --bg-secondary: oklch(98.8% 0.005 107.135);
+  --bg-tertiary: oklch(96% 0.01 107.3);
 
   /* Text colors */
   --text-primary: oklch(28% 0.015 107.3);

@@ -38,7 +38,7 @@ export default function Header() {
             backgroundColor: headerBg,
             borderColor: headerBorder,
           }}
-          className="w-full max-w-5xl h-14 rounded-full backdrop-blur-sm transition-all duration-300 pointer-events-auto flex items-center justify-between px-6"
+          className="w-full max-w-3xl h-14 rounded-full backdrop-blur-sm transition-all duration-300 pointer-events-auto flex items-center justify-between px-6"
         >
           <motion.div style={{ opacity: nameOpacity, y: nameY }} className="font-serif text-base md:text-lg font-medium tracking-tight text-foreground truncate max-w-[50%]">
             {portfolioData.hero.name}

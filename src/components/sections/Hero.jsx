@@ -53,7 +53,7 @@ const RoleText = ({ role, currentKey }) => {
   return (
     <motion.p
       key={currentKey}
-      className="text-xl md:text-2xl text-accent-olive font-medium italic whitespace-nowrap absolute flex tracking-normal"
+      className="text-xl md:text-2xl text-accent-matcha font-medium italic whitespace-nowrap absolute flex tracking-tight"
     >
       {role.split('').map((char, i) => (
         <motion.span
@@ -107,7 +107,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative flex flex-col items-start justify-center w-full pt-16 md:pt-24 pb-8 md:pb-16 border-b border-border/50">
+    <section className="relative flex flex-col items-start justify-center w-full pt-16 md:pt-4 pb-8 md:pb-16">
 
       <motion.div
         variants={container}
@@ -124,7 +124,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.div variants={item} className="flex flex-col gap-2">
-          <h1 className="text-4xl md:text-5xl font-serif font-light tracking-tight text-foreground">
+          <h1 className="text-4xl md:text-5xl font-serif font-medium tracking-tight text-foreground">
             {hero.name}
           </h1>
           <div className="h-8 md:h-10 relative overflow-hidden flex items-center w-full perspective-[1000px] mask-[linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]">
@@ -138,7 +138,7 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        <motion.div variants={item} className="group text-base md:text-lg text-muted-light leading-loose mt-2 font-normal cursor-default">
+        <motion.div variants={item} className="group text-base md:text-md text-muted leading-loose mt-2 font-light cursor-default">
           I'm a <Highlight colorClass="bg-slate-600">Computer Science student</Highlight> working with{' '}
           <Highlight colorClass="bg-blue-400">
             <img src="/icons/Python.svg" alt="Python" className="w-[16px] h-[16px] relative -top-px" /> Python
