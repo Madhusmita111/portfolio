@@ -121,7 +121,7 @@ export default function ProjectsList() {
       {createPortal(
         <AnimatePresence>
           {selectedProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-12">
+          <div className="fixed inset-0 z-200 flex items-center justify-center p-4 sm:p-6 md:p-12">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
