@@ -124,7 +124,7 @@
 /* === NEW: Dark Mode Overrides === */
 .dark {
   /* Background colors */
-  --bg-primary: oklch(12% 0.002 107.3);
+  --bg-primary: oklch(19.044% 0.00393 106.86);
   --bg-secondary: oklch(15% 0.003 107.3);
   --bg-tertiary: oklch(19% 0.005 107.3);
 
@@ -166,7 +166,7 @@
   --modal-overlay-soft: oklch(14% 0.01 111 / 0.2);
 
   /* Shadows */
-  --shadow-olive-soft: 0 10px 30px oklch(8% 0.01 110 / 0.6);
+  --shadow-olive-soft: 0 10px 30px oklch(14.742% 0.01146 107.758 / 0.6);
   --shadow-olive-lift: 0 16px 40px oklch(6% 0.01 111 / 0.7);
 
   /* Optional highlight */

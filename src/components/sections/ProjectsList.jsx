@@ -106,7 +106,6 @@ export default function ProjectsList() {
             style={{ x: springX, y: springY }}
             className="fixed top-0 left-0 pointer-events-none z-40 w-[350px] h-[200px] overflow-hidden shadow-olive-lift bg-surface hidden md:block"
           >
-            <div className="absolute inset-0 bg-[linear-gradient(to_top,var(--media-overlay-strong),var(--media-overlay-soft))] z-10" />
             <img
               src={hoveredProject.image}
               alt={hoveredProject.title}
