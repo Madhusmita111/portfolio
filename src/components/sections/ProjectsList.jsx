@@ -59,27 +59,27 @@ export default function ProjectsList() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                    className="absolute inset-0 bg-[#0d0e0a] rounded-2xl -z-10"
+                    className="absolute inset-0 bg-foreground rounded-2xl -z-10"
                   />
                 )}
               </AnimatePresence>
 
               <div className="relative z-10 flex items-center gap-3 md:gap-6 pointer-events-none">
-                <span className="text-2xl font-serif text-accent-matcha tabular-nums w-6 shrink-0 hidden md:block group-hover:text-neutral-500 transition-colors duration-300">
+                <span className="text-2xl font-serif text-accent-matcha tabular-nums w-6 shrink-0 hidden md:block group-hover:text-background transition-colors duration-300 opacity-60 group-hover:opacity-100">
                   {String(idx + 1).padStart(2, '0')}
                 </span>
                 <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-3">
-                  <span className="text-base md:text-lg font-medium text-foreground tracking-tight group-hover:text-white transition-colors">
+                  <span className="text-base md:text-lg font-medium text-foreground tracking-tight group-hover:text-background transition-colors">
                     {project.title}
                   </span>
-                  <span className="hidden md:inline-block text-muted-light group-hover:text-neutral-600 transition-colors">•</span>
-                  <span className="text-sm md:text-base text-muted font-light group-hover:text-neutral-400 transition-colors">
+                  <span className="hidden md:inline-block text-muted-light group-hover:text-background/60 transition-colors">•</span>
+                  <span className="text-sm md:text-base text-muted font-light group-hover:text-background/80 transition-colors">
                     {project.tech[0]}
                   </span>
                 </div>
               </div>
               <div className="relative z-10 flex items-center gap-4 md:gap-8 shrink-0 pointer-events-none">
-                <span className="text-sm md:text-base text-muted font-medium font-serif group-hover:text-neutral-400 transition-colors">
+                <span className="text-sm md:text-base text-muted font-medium font-serif group-hover:text-background/80 transition-colors">
                   {project.date}
                 </span>
                 <motion.div
@@ -87,7 +87,7 @@ export default function ProjectsList() {
                   whileHover={{ scale: 1.2, rotate: 45 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 15 }}
                 >
-                  <ArrowUpRight weight="bold" className="w-5 h-5 text-muted group-hover:text-white transition-all" />
+                  <ArrowUpRight weight="bold" className="w-5 h-5 text-muted group-hover:text-background transition-all" />
                 </motion.div>
               </div>
             </motion.div>

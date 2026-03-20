@@ -7,10 +7,9 @@ export default function PageLayout({ children }) {
     <div className="relative min-h-screen bg-background text-foreground flex flex-col items-center selection:bg-accent selection:text-white overflow-x-hidden">
 
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <svg className="absolute inset-0 w-full h-[200vh] opacity-[0.03] pointer-events-none text-foreground" xmlns="http://www.w3.org/2000/svg">
-          <pattern id="data-grid" width="60" height="60" patternUnits="userSpaceOnUse">
-            <path d="M 60 0 L 0 0 0 60" fill="none" stroke="currentColor" strokeWidth="1" />
-            <circle cx="60" cy="60" r="1.5" fill="currentColor" />
+        <svg className="absolute inset-0 w-full h-[200vh] opacity-[0.06] pointer-events-none text-foreground" xmlns="http://www.w3.org/2000/svg">
+          <pattern id="data-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+            <path d="M 32 0 L 0 0 0 32" fill="none" stroke="currentColor" strokeWidth="0.5" />
           </pattern>
           <rect width="100%" height="100%" fill="url(#data-grid)" />
         </svg>

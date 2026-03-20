@@ -120,3 +120,81 @@
   0%, 100% { opacity: 0.4; transform: scale(1); }
   50% { opacity: 0.7; transform: scale(1.15); }
 }
+
+/* === NEW: Dark Mode Overrides === */
+.dark {
+  /* Background colors */
+  --bg-primary: oklch(12% 0.002 107.3);
+  --bg-secondary: oklch(15% 0.003 107.3);
+  --bg-tertiary: oklch(19% 0.005 107.3);
+
+  /* Text colors */
+  --text-primary: oklch(98% 0.005 107.3);
+  --text-secondary: oklch(80% 0.01 107.3);
+  --text-tertiary: oklch(60% 0.01 107.3);
+
+  /* Border colors */
+  --border-light: oklch(25% 0.01 107.3);
+  --border-medium: oklch(32% 0.015 107.3);
+
+  /* Accent colors */
+  --accent-primary: oklch(75% 0.05 107.3);
+  --accent-hover: oklch(85% 0.05 107.3);
+  --accent-matcha: oklch(75% 0.06 131);
+  --accent-olive-deep: oklch(80% 0.05 112);
+
+  /* UI elements */
+  --pill-bg: oklch(22% 0.01 107.3);
+  --panel-matcha-top: oklch(28% 0.015 106);
+  --panel-matcha-bottom: oklch(24% 0.015 111);
+  --surface-matcha-soft: oklch(26% 0.02 110);
+  --surface-matcha-chip: oklch(25% 0.02 108);
+
+  /* Structural accents */
+  --border-accent-soft: oklch(28% 0.015 109);
+  --border-accent-medium: oklch(34% 0.02 111);
+
+  /* Glow tones */
+  --glow-matcha-soft: oklch(35% 0.04 118 / 0.4);
+  --glow-matcha-medium: oklch(40% 0.045 118 / 0.5);
+  --glow-matcha-trail: oklch(30% 0.03 114 / 0.3);
+
+  /* Media overlays */
+  --media-overlay-strong: oklch(12% 0.01 110 / 0.85);
+  --media-overlay-soft: oklch(12% 0.01 110 / 0.3);
+  --modal-overlay-strong: oklch(14% 0.01 111 / 0.9);
+  --modal-overlay-soft: oklch(14% 0.01 111 / 0.2);
+
+  /* Shadows */
+  --shadow-olive-soft: 0 10px 30px oklch(8% 0.01 110 / 0.6);
+  --shadow-olive-lift: 0 16px 40px oklch(6% 0.01 111 / 0.7);
+
+  /* Optional highlight */
+  --accent-soft: oklch(25% 0.015 107.3);
+
+  /* Ambient Background Orbs */
+  --orb-olive: oklch(45% 0.06 118 / 0.15);
+  --orb-matcha: oklch(50% 0.07 131 / 0.12);
+  --orb-sage: oklch(55% 0.06 107 / 0.1);
+
+  /* Glass effects */
+  --glass-bg: oklch(16% 0.01 107.3 / 0.7);
+  --glass-border: oklch(35% 0.02 109 / 0.3);
+  --glass-glow: oklch(40% 0.04 118 / 0.2);
+
+  /* Timeline */
+  --timeline-line: oklch(35% 0.02 118 / 0.5);
+  --timeline-dot: oklch(70% 0.05 118);
+  --timeline-dot-glow: oklch(75% 0.06 131 / 0.3);
+
+  /* Card shimmer */
+  --shimmer-start: oklch(18% 0.01 107 / 0);
+  --shimmer-mid: oklch(35% 0.03 118 / 0.2);
+  --shimmer-end: oklch(18% 0.01 107 / 0);
+
+  /* Aurora */
+  --aurora-1: oklch(35% 0.05 131);
+  --aurora-2: oklch(30% 0.04 118);
+  --aurora-3: oklch(40% 0.045 107);
+  --aurora-4: oklch(32% 0.05 140);
+}
