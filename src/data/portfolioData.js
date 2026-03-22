@@ -13,26 +13,38 @@ export const portfolioData = {
 
     description: "I’m a Computer Science student working with Python, SQL, and Power BI to analyze data and uncover patterns. My projects explore phishing detection, crime analytics, and trend analysis, turning complex datasets into actionable insights."
   },
-  skills:
-  {
-    "Programming Languages": ["Python", "SQL"],
-
-    "Data Analysis & Processing": [
+  skills: {
+    "Languages": [
+      "Python",
+      "SQL",
+      "C++",
+      "Bash Scripting"
+    ],
+    "Machine Learning": [
+      "Scikit-learn",
+      "TensorFlow",
+      "PyTorch",
+      "Computer Vision",
+      "NLP"
+    ],
+    "Data Tools": [
       "Pandas",
       "NumPy",
-    ],
-
-    "Data Visualization & BI": [
       "Power BI",
-      "Excel",
-      "Matplotlib",
-      "Seaborn",
+      "Excel"
     ],
-
-    "Tools & Platforms": [
+    "DevOps": [
+      "Docker",
+      "Git",
+      "MLflow"
+    ],
+    "Frameworks": [
+      "Flask",
+      "FastAPI",
       "Jupyter",
-      "Colab",
-      "Git"
+      "Google Colab",
+      "Matplotlib",
+      "Seaborn"
     ]
   }
   ,
@@ -126,18 +138,6 @@ export const portfolioData = {
       degree: "Bachelor of Technology (B.Tech.) in Computer Science Engineering",
       grade: "CGPA: 7.83",
       date: "2023 – Present"
-    },
-    {
-      institution: "Spectrum Gurukul",
-      degree: "Intermediate",
-      grade: "92.6%",
-      date: "2020 – 2021"
-    },
-    {
-      institution: "Shankardev Sishu/Vidya Niketan",
-      degree: "Matriculation",
-      grade: "92.8%",
-      date: "2018 – 2019"
     }
   ],
   certificates: [

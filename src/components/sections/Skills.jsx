@@ -1,246 +1,210 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
+import { motion, useAnimationFrame, useMotionValue, useSpring, useTransform } from 'motion/react';
 import Section from '../Section';
 import { portfolioData } from '../../data/portfolioData';
-import {
-  motion,
-  useAnimationFrame,
-  useMotionValue,
-  useReducedMotion,
-  useSpring,
-  useTransform,
-} from 'motion/react';
 
+// Map skills to CDN icons
 const skillIconMap = {
-  'Python': '/icons/Python.svg',
-  'SQL': '/icons/sql.svg',
-  'Pandas': '/icons/Pandas.svg',
-  'NumPy': '/icons/NumPy.svg',
-  'Power BI': '/icons/power-bi.svg',
-  'Excel': '/icons/excel.svg',
-  'Matplotlib': '/icons/Matplotlib.svg',
-  'Seaborn': '/icons/seaborn.svg',
-  'Colab': '/icons/colab.svg',
-  'Git': '/icons/git-icon.svg',
-  'Jupyter': '/icons/Jupyter.svg',
+  "Python": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
+  "SQL": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg",
+  "C++": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg",
+  "Bash Scripting": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-original.svg",
+  "Scikit-learn": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg",
+  "TensorFlow": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg",
+  "PyTorch": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg",
+  "Computer Vision": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/opencv/opencv-original.svg",
+  "NLP": "https://cdn.rawgit.com/devicons/devicon/master/icons/google/google-original.svg", 
+  "Pandas": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg",
+  "NumPy": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/numpy/numpy-original.svg",
+  "Power BI": "https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg",
+  "Excel": "/icons/excel.svg",
+  "Docker": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
+  "Git": "/icons/git-icon.svg",
+  "MLflow": "/icons/MLflow.svg",
+  "Flask": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg",
+  "FastAPI": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg",
+  "Jupyter": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jupyter/jupyter-original.svg",
+  "Google Colab": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Colaboratory_SVG_Logo.svg",
+  "Matplotlib": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matplotlib/matplotlib-original.svg",
+  "Seaborn": "https://seaborn.pydata.org/_images/logo-mark-lightbg.svg"
 };
 
-function RepulsiveSkillPill({ item, iconPath, pointerX, pointerY, pointerActive, index }) {
-  const ref = useRef(null);
-  const shouldReduceMotion = useReducedMotion();
+// ─── Skill Pill (shared between both layouts) ───
+const SkillPill = ({ skill, isHovered, vertical = true }) => {
+  const iconPath = skillIconMap[skill];
+  return (
+    <div className={`flex items-center gap-2.5 rounded-xl transition-all duration-500 ease-out group/pill hover:bg-foreground/5 cursor-default ${
+      vertical ? 'px-4 py-3 w-full' : 'px-3 py-2 shrink-0'
+    }`}>
+      {iconPath ? (
+        <div className="w-5 h-5 flex items-center justify-center shrink-0 group-hover/pill:scale-125 transition-transform duration-500 ease-out">
+          <img 
+            src={iconPath} 
+            alt={skill} 
+            className={`w-full h-full object-contain pointer-events-none transition-all duration-500 ease-out ${isHovered ? 'opacity-100' : 'opacity-50'} group-hover/pill:opacity-100`} 
+          />
+        </div>
+      ) : (
+        <div className={`w-1.5 h-1.5 rounded-full shrink-0 transition-all duration-500 group-hover/pill:scale-150 ${isHovered ? 'bg-accent-matcha opacity-100' : 'bg-foreground/20'}`} />
+      )}
+      <span className={`text-sm font-sans transition-all duration-500 ease-out whitespace-nowrap ${isHovered ? 'text-foreground/80 opacity-100' : 'text-foreground/40'} group-hover/pill:text-foreground group-hover/pill:font-medium`}>
+        {skill}
+      </span>
+    </div>
+  );
+};
 
-  const targetX = useMotionValue(0);
-  const targetY = useMotionValue(0);
-  const intensity = useMotionValue(0);
+// ─── Desktop: Vertical Marquee Column ───
+const VerticalMarqueeColumn = ({ category, items, direction = "up", baseSpeed = 20 }) => {
+  const [isHovered, setIsHovered] = React.useState(false);
+  
+  const yPercent = useMotionValue(direction === "up" ? 0 : -25);
+  const targetSpeedMultiplier = isHovered ? 0.15 : 1; 
+  const speedMultiplier = useSpring(1, { bounce: 0, duration: 800 });
+  
+  React.useEffect(() => {
+    speedMultiplier.set(targetSpeedMultiplier);
+  }, [isHovered, targetSpeedMultiplier, speedMultiplier]);
 
-  const x = useSpring(targetX, { stiffness: 210, damping: 20, mass: 0.8 });
-  const y = useSpring(targetY, { stiffness: 210, damping: 20, mass: 0.8 });
-  const glowOpacity = useSpring(intensity, { stiffness: 180, damping: 22 });
-
-  const scale = useTransform(glowOpacity, [0, 1], [1, 1.055]);
-  const rotate = useTransform(x, [-36, 36], [-6, 6]);
-  const iconAlpha = useTransform(glowOpacity, [0, 1], [1, 1]);
-  const labelAlpha = useTransform(glowOpacity, [0, 1], [0.72, 1]);
-
-  useAnimationFrame((t) => {
-    if (shouldReduceMotion) {
-      targetX.set(0);
-      targetY.set(0);
-      intensity.set(0);
-      return;
-    }
-
-    const node = ref.current;
-    if (!node) return;
-
-    const wobbleX = Math.sin(t / 1100 + index * 1.31) * 1.4;
-    const wobbleY = Math.cos(t / 1400 + index * 0.93) * 1.2;
-
-    if (!pointerActive) {
-      targetX.set(wobbleX);
-      targetY.set(wobbleY);
-      intensity.set(0);
-      return;
-    }
-
-    const rect = node.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-
-    const dx = centerX - pointerX.get();
-    const dy = centerY - pointerY.get();
-    const distance = Math.hypot(dx, dy);
-
-    const radius = 185;
-    const maxPush = 34;
-
-    if (distance < radius && distance > 0.01) {
-      const normX = dx / distance;
-      const normY = dy / distance;
-      const force = ((radius - distance) / radius) ** 1.8;
-      const push = force * maxPush;
-
-      targetX.set(normX * push + wobbleX * 0.6);
-      targetY.set(normY * push + wobbleY * 0.6);
-      intensity.set(Math.min(force * 1.25, 1));
-      return;
-    }
-
-    targetX.set(wobbleX);
-    targetY.set(wobbleY);
-    intensity.set(0);
+  useAnimationFrame((t, delta) => {
+    const moveY = (delta / 1000) * (25 / baseSpeed) * speedMultiplier.get();
+    let newY = yPercent.get() + (direction === "up" ? -moveY : moveY);
+    if (direction === "up" && newY <= -25) newY += 25;
+    if (direction === "down" && newY >= 0) newY -= 25;
+    yPercent.set(newY);
   });
 
-  return (
-    <motion.div
-      ref={ref}
-      style={{ x, y, scale, rotate }}
-      className="group relative px-2.5 py-2 sm:px-3 sm:py-3 flex items-center gap-2 sm:gap-4 rounded-2xl bg-surface/80 backdrop-blur-md shadow-olive-soft cursor-default will-change-transform"
-    >
-      <motion.div
-        aria-hidden
-        style={{ opacity: glowOpacity }}
-        className="absolute inset-0 rounded-2xl"
-      >
-        <div className="absolute inset-0 rounded-2xl bg-[radial-gradient(130%_130%_at_50%_0%,var(--glow-matcha-soft),var(--glow-clear))]" />
-        <div className="absolute -inset-px rounded-2xl border border-border-accent-medium/70" />
-      </motion.div>
+  const y = useTransform(yPercent, v => `${v}%`);
 
-      {iconPath ? (
-        <motion.div
-          style={{ opacity: iconAlpha }}
-          className="w-5 h-5 sm:w-7 sm:h-7 flex items-center justify-center shrink-0 "
-        >
-          <img src={iconPath} alt={item} className="w-full h-full object-contain pointer-events-none" />
-        </motion.div>
-      ) : (
-        <div className="relative flex items-center justify-center shrink-0">
-          <motion.span
-            style={{ opacity: iconAlpha }}
-            className="absolute w-2.5 h-2.5 rounded-full bg-accent-matcha/30 scale-150"
-          />
-          <span className="relative z-10 w-1.5 h-1.5 rounded-full bg-accent-olive/80" />
-        </div>
-      )}
-
-      <motion.span
-        style={{ opacity: labelAlpha }}
-        className="text-xs sm:text-sm md:text-base font-sans font-light tracking-wide text-foreground truncate"
-      >
-        {item}
-      </motion.span>
-    </motion.div>
+  const SkillBlock = () => (
+    <div className="flex flex-col gap-4 pb-4">
+      {items.map((skill, idx) => (
+        <SkillPill key={`${skill}-${idx}`} skill={skill} isHovered={isHovered} vertical />
+      ))}
+    </div>
   );
-}
+
+  return (
+    <div 
+      className="flex flex-col gap-4 w-full h-full overflow-hidden"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <h3 className={`text-xs md:text-sm ml-4 text-left font-medium shrink-0 pb-2 ${isHovered ? 'text-foreground/80' : 'text-foreground/40'}`}>
+        {category}
+      </h3>
+      <div 
+        className="relative flex-1 min-h-0 w-full overflow-hidden touch-pan-x"
+        style={{
+          maskImage: 'linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)'
+        }}
+      >
+        <motion.div 
+          className="absolute inset-x-0 top-0 flex flex-col w-full"
+          style={{ y }}
+        >
+          <SkillBlock />
+          <SkillBlock />
+          <SkillBlock />
+          <SkillBlock />
+        </motion.div>
+      </div>
+    </div>
+  );
+};
+
+// ─── Mobile: Horizontal Marquee Row ───
+const HorizontalMarqueeRow = ({ category, items, direction = "left", baseSpeed = 30 }) => {
+  const xPercent = useMotionValue(direction === "left" ? 0 : -25);
+
+  useAnimationFrame((t, delta) => {
+    const moveX = (delta / 1000) * (25 / baseSpeed);
+    let newX = xPercent.get() + (direction === "left" ? -moveX : moveX);
+    if (direction === "left" && newX <= -25) newX += 25;
+    if (direction === "right" && newX >= 0) newX -= 25;
+    xPercent.set(newX);
+  });
+
+  const x = useTransform(xPercent, v => `${v}%`);
+
+  const SkillStrip = () => (
+    <div className="flex gap-2 pr-2">
+      {items.map((skill, idx) => (
+        <SkillPill key={`${skill}-${idx}`} skill={skill} isHovered={true} vertical={false} />
+      ))}
+    </div>
+  );
+
+  return (
+    <div className="flex flex-col gap-2">
+      <h3 className="text-xs font-medium text-foreground/40 px-1">
+        {category}
+      </h3>
+      <div 
+        className="relative w-full overflow-hidden h-10"
+        style={{
+          maskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)'
+        }}
+      >
+        <motion.div 
+          className="absolute top-0 left-0 flex h-full items-center"
+          style={{ x }}
+        >
+          <SkillStrip />
+          <SkillStrip />
+          <SkillStrip />
+          <SkillStrip />
+        </motion.div>
+      </div>
+    </div>
+  );
+};
 
 export default function Skills() {
   const { skills } = portfolioData;
-  const shouldReduceMotion = useReducedMotion();
-  const [pointerActive, setPointerActive] = useState(false);
-  const [localPointer, setLocalPointer] = useState({ x: -999, y: -999 });
-
-  const pointerX = useMotionValue(-9999);
-  const pointerY = useMotionValue(-9999);
-  const orbX = useSpring(0, { stiffness: 130, damping: 22 });
-  const orbY = useSpring(0, { stiffness: 130, damping: 22 });
-  const orbOpacity = useSpring(0, { stiffness: 140, damping: 25 });
-
-  const allSkills = Object.values(skills).flat();
-  const uniqueSkills = [...new Set(allSkills)];
-
-  const handlePointerMove = (event) => {
-    const rect = event.currentTarget.getBoundingClientRect();
-    pointerX.set(event.clientX);
-    pointerY.set(event.clientY);
-    setLocalPointer({ x: event.clientX - rect.left, y: event.clientY - rect.top });
-    setPointerActive(true);
-    orbX.set(event.clientX - rect.left - 112);
-    orbY.set(event.clientY - rect.top - 112);
-    orbOpacity.set(1);
-  };
-
-  const resetPointerField = () => {
-    setPointerActive(false);
-    orbOpacity.set(0);
-  };
 
   const container = {
     hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.04,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: {
-      opacity: 0,
-      y: 24,
-      scale: 0.9
-    },
-    show: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 90,
-        damping: 16
-      }
-    }
+    show: { opacity: 1, transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] } }
   };
 
   return (
-    <Section id="skills" title="Skills">
-      <div
-        className="relative mt-12 md:mt-20 rounded-3xl glass-matcha-panel p-5 md:p-8 overflow-hidden"
-        onPointerMove={handlePointerMove}
-        onPointerLeave={resetPointerField}
-        onPointerCancel={resetPointerField}
+    <Section id="skills" title="Tech Stack">
+      <motion.div 
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.15 }}
+        className="mt-10 md:mt-16 w-full"
       >
-        {!shouldReduceMotion && (
-          <>
-            <motion.div
-              aria-hidden
-              style={{ x: orbX, y: orbY, opacity: orbOpacity }}
-              className="pointer-events-none absolute w-56 h-56 rounded-full blur-2xl bg-[radial-gradient(circle,var(--glow-matcha-medium),var(--glow-clear))]"
+        {/* Desktop: Vertical 5-column marquee */}
+        <div className="hidden md:grid grid-cols-5 gap-4 w-full max-w-5xl mx-auto h-[350px]">
+          {Object.entries(skills).map(([category, items], idx) => (
+            <VerticalMarqueeColumn 
+              key={category} 
+              category={category} 
+              items={items} 
+              direction={idx % 2 === 0 ? "up" : "down"}
+              baseSpeed={20 + (idx * 2)}
             />
-            <motion.div
-              aria-hidden
-              initial={false}
-              animate={{
-                x: localPointer.x > 0 ? localPointer.x - 240 : -220,
-                y: localPointer.y > 0 ? localPointer.y - 110 : -120,
-              }}
-              transition={{ type: 'spring', stiffness: 70, damping: 24 }}
-              className="pointer-events-none absolute w-80 h-28 rounded-full blur-xl bg-[radial-gradient(circle,var(--glow-matcha-trail),var(--glow-clear))]"
-            />
-          </>
-        )}
-
-        <motion.div
-          className="relative z-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6"
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.1 }}
-        >
-          {uniqueSkills.map((skill, idx) => (
-            <motion.div key={skill} variants={itemVariants}>
-              <RepulsiveSkillPill
-                item={skill}
-                iconPath={skillIconMap[skill]}
-                pointerX={pointerX}
-                pointerY={pointerY}
-                pointerActive={pointerActive}
-                index={idx}
-              />
-            </motion.div>
           ))}
-        </motion.div>
-      </div>
+        </div>
+
+        {/* Mobile: Horizontal stacked marquee rows */}
+        <div className="flex flex-col gap-4 md:hidden">
+          {Object.entries(skills).map(([category, items], idx) => (
+            <HorizontalMarqueeRow
+              key={category}
+              category={category}
+              items={items}
+              direction={idx % 2 === 0 ? "left" : "right"}
+              baseSpeed={25 + (idx * 3)}
+            />
+          ))}
+        </div>
+      </motion.div>
     </Section>
   );
 }

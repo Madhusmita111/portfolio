@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useSpring, useMotionValue, AnimatePresence } from 'motion/react';
 import { portfolioData } from '../../data/portfolioData';
-import { LinkedinLogo, GithubLogo, EnvelopeSimple } from '@phosphor-icons/react';
+import { LinkedinLogo, GithubLogo, EnvelopeSimple, Copy, CheckIcon, LinkIcon } from '@phosphor-icons/react';
 
 function MagneticSocialButton({ href, icon: Icon, bgClass, children }) {
   const ref = useRef(null);
@@ -76,6 +76,82 @@ const RoleText = ({ role, currentKey }) => {
   );
 };
 
+function UrlCopyBar() {
+  const [copied, setCopied] = useState(false);
+  const siteUrl = "madhufolio.vercel.app";
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(`https://${siteUrl}`);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Fallback
+      const textArea = document.createElement('textarea');
+      textArea.value = `https://${siteUrl}`;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+
+  return (
+<motion.button
+  onClick={handleCopy}
+  whileTap={{ scale: 0.98 }}
+  whileHover={{ y: -1 }}
+  aria-label={copied ? "Copied to clipboard" : "Copy site URL"}
+  className="group relative flex w-1/2 items-center justify-between rounded-full bg-foreground/5 py-2 pl-4 pr-2 font-sans text-sm transition-colors hover:bg-foreground/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500"
+>
+  {/* Left: Icon + Text Label */}
+  <div className="flex items-center gap-3 overflow-hidden">
+    <span className="shrink-0 text-foreground/40">
+      <LinkIcon className="h-4 w-4" />
+    </span>
+    <span className="truncate font-medium tracking-tight text-foreground/60">
+      {siteUrl}
+    </span>
+  </div>
+
+  {/* Right: Feedback Circle */}
+  <div
+    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors duration-300 ${
+      copied 
+        ? 'bg-emerald-500/15 text-emerald-600' 
+        : 'bg-foreground/5 text-foreground/40 group-hover:text-foreground/80'
+    }`}
+  >
+    <AnimatePresence mode="wait" initial={false}>
+      {copied ? (
+        <motion.div
+          key="check"
+          initial={{ opacity: 0, scale: 0.5, rotate: -45 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          exit={{ opacity: 0, scale: 0.5 }}
+          transition={{ type: "spring", stiffness: 500, damping: 25 }}
+        >
+          <CheckIcon weight="bold" className="h-4 w-4" />
+        </motion.div>
+      ) : (
+        <motion.div
+          key="copy"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.5 }}
+          transition={{ duration: 0.15 }}
+        >
+          <Copy weight="bold" className="h-4 w-4" />
+        </motion.div>
+      )}
+    </AnimatePresence>
+  </div>
+</motion.button>
+  );
+}
+
 export default function Hero() {
   const { hero, about } = portfolioData;
 
@@ -138,24 +214,22 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        <motion.div variants={item} className="group text-base md:text-md text-muted leading-loose mt-2 font-light cursor-default">
-          I'm a <Highlight colorClass="bg-slate-600">Computer Science student</Highlight> working with{' '}
+        <motion.div variants={item} className="group text-base md:text-md text-muted leading-loose mt-2 font-light cursor-default relative z-20">
+          I am a Computer Science student focused on {' '}
+          <Highlight colorClass="bg-indigo-400">Data Science</Highlight> and {' '}
+          <Highlight colorClass="bg-purple-400">Machine Learning</Highlight>, with experience in {' '}
           <Highlight colorClass="bg-blue-400">
-            <img src="/icons/Python.svg" alt="Python" className="w-[16px] h-[16px] relative -top-px" /> Python
-          </Highlight>
-          ,{' '}
-          <Highlight colorClass="bg-green-500">
-            <img src="/icons/sql.svg" alt="SQL" className="w-[16px] h-[16px] relative -top-px" /> SQL
-          </Highlight>
-          , and{' '}
-          <Highlight colorClass="bg-yellow-400">
-            <img src="/icons/power-bi.svg" alt="Power BI" className="w-[16px] h-[16px] relative -top-px" /> Power BI
-          </Highlight>{' '}
-          to analyze data and uncover patterns. My projects explore{' '}
-          <Highlight colorClass="bg-red-400">phishing detection</Highlight>,{' '}
-          <Highlight colorClass="bg-purple-400">crime analytics</Highlight>, and{' '}
-          <Highlight colorClass="bg-teal-400">trend analysis</Highlight>
-          , turning complex datasets into actionable insights.
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" className="w-[16px] h-[16px] relative -top-px inline-block" /> Python
+          </Highlight>, {' '}
+          <Highlight colorClass="bg-emerald-400">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL" className="w-[16px] h-[16px] relative -top-px inline-block" /> SQL
+          </Highlight>, and {' '}
+          <Highlight colorClass="bg-sky-500">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++" className="w-[16px] h-[16px] relative -top-px inline-block" /> C++
+          </Highlight>. I build {' '}
+          <span className="font-medium text-foreground">predictive models</span>, {' '}
+          <span className="font-medium text-foreground">data pipelines</span>, and {' '}
+          <span className="font-medium text-foreground">automation systems</span> that turn complex datasets into practical insights and scalable solutions.
         </motion.div>
 
         <motion.div variants={item} className="flex flex-wrap items-center gap-3 mt-6">
@@ -168,6 +242,8 @@ export default function Hero() {
           {hero.email && (
             <MagneticSocialButton href={`mailto:${hero.email}`} icon={EnvelopeSimple} bgClass="bg-accent-olive hover:bg-accent-olive/90" />
           )}
+
+          <UrlCopyBar />
         </motion.div>
       </motion.div>
     </section>
