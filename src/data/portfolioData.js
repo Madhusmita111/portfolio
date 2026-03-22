@@ -1,7 +1,7 @@
 export const portfolioData = {
   hero: {
     name: "Madhusmita Talukdar",
-    roles: ["Aspiring Data Scientist", "Machine Learning Enthusiast", "Predictive Analytics"],
+    roles: ["Aspiring Data Scientist", "Agentic AI Developer", "Machine Learning Engineer"],
     avatar: "/images/avatar.png",
     email: "tmadhusmita011@gmail.com",
     linkedin: "https://www.linkedin.com/in/madhusmitatalukdar",
