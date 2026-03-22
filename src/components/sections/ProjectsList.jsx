@@ -42,7 +42,7 @@ export default function ProjectsList() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.6, delay: idx * 0.06, ease: [0.22, 1, 0.36, 1] }}
-                className={`flex flex-col rounded-xl border transition-all duration-300 ${isExpanded ? 'bg-surface-matcha border-border/40 shadow-sm' : 'bg-surface-matcha border-border/20 hover:border-border/40'}`}
+                className={`flex flex-col rounded-xl border transition-[border-color,box-shadow] duration-300 ${isExpanded ? 'bg-surface-matcha border-border/40 shadow-sm' : 'bg-surface-matcha border-border/20 hover:border-border/40'}`}
               >
                 {/* Row Header */}
                 <div
@@ -55,12 +55,11 @@ export default function ProjectsList() {
                   <AnimatePresence>
                     {hoveredProject === project && !isExpanded && (
                       <motion.div
-                        layoutId="projectHoverLayer"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                        className="absolute inset-0 bg-foreground rounded-2xl -z-10"
+                        transition={{ duration: 0.2 }}
+                        className="absolute inset-0 bg-foreground rounded-xl -z-10"
                       />
                     )}
                   </AnimatePresence>
@@ -151,7 +150,7 @@ export default function ProjectsList() {
                               className="flex flex-wrap gap-1.5 mb-4"
                             >
                               {project.tech.map((t, i) => (
-                                <span key={i} className="text-[11px] font-medium text-foreground/50 bg-foreground/40 px-2.5 py-1 rounded-full">
+                                <span key={i} className="text-[11px] font-medium text-surface bg-foreground/50 px-2.5 py-1 rounded-full">
                                   {t}
                                 </span>
                               ))}

@@ -104,7 +104,7 @@ function UrlCopyBar() {
   whileTap={{ scale: 0.98 }}
   whileHover={{ y: -1 }}
   aria-label={copied ? "Copied to clipboard" : "Copy site URL"}
-  className="group relative flex w-1/2 items-center justify-between rounded-full bg-foreground/5 py-2 pl-4 pr-2 font-sans text-sm transition-colors hover:bg-foreground/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500"
+  className="group relative flex w-full md:w-1/2 items-center justify-between rounded-full bg-foreground/5 py-2 pl-4 pr-2 font-sans text-sm transition-colors hover:bg-foreground/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500"
 >
   {/* Left: Icon + Text Label */}
   <div className="flex items-center gap-3 overflow-hidden">
@@ -118,7 +118,7 @@ function UrlCopyBar() {
 
   {/* Right: Feedback Circle */}
   <div
-    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors duration-300 ${
+    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors duration-300 cursor-pointer ${
       copied 
         ? 'bg-emerald-500/15 text-emerald-600' 
         : 'bg-foreground/5 text-foreground/40 group-hover:text-foreground/80'
