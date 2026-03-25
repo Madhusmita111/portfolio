@@ -53,7 +53,7 @@ export const portfolioData = {
       title: "Smart URL Safety Checker",
       date: "May – July 2025",
       tech: ["Python", "Flask", "Scikit-learn", "XGBoost", "Pandas", "NumPy", "REST API"],
-      image: "/projects/url-checker.png",
+      image: "/projects/thumbnail.jpg",
       points: [
         "Developed a machine learning–based web application to detect and classify malicious URLs for phishing prevention",
         "Designed a feature extraction pipeline generating 30+ lexical, host-based and other attributes from 70K+ URLs",
@@ -71,7 +71,7 @@ export const portfolioData = {
       title: "What2Wear AI Chatbot",
       date: "May 2025",
       tech: ["Python", "JavaScript", "HTML/CSS", "API Integration"],
-      image: "/projects/what2wear.png",
+      image: "/projects/thumbnail.jpg",
       points: [
         "Implemented a rule-based recommendation engine for outfit suggestions",
         "Integrated external weather API and user preferences",
@@ -86,7 +86,7 @@ export const portfolioData = {
       title: "Crime Pattern Analysis",
       date: "2025",
       tech: ["Python", "Pandas", "NumPy", "Scikit-learn", "Matplotlib", "Seaborn", "GeoPandas", "Google Colab"],
-      image: "/projects/crime.jpeg",
+      image: "/projects/thumbnail.jpg",
       points: [
         "Processed and analyzed 250K+ crime records",
         "Performed preprocessing, cleaning, and feature engineering",
@@ -104,7 +104,7 @@ export const portfolioData = {
       title: "Reddit–Google Trends Engagement Analysis",
       date: "December 2025",
       tech: ["Power BI", "Data Analytics", "Data Modelling"],
-      image: "/projects/reddit.jpeg",
+      image: "/projects/thumbnail.jpg",
       points: [
         "Built interactive Power BI dashboard integrating Google Trends and Reddit data",
         "Designed relational data models",
@@ -120,7 +120,7 @@ export const portfolioData = {
       title: "Olympic Dashboard",
       date: "April 2025",
       tech: ["Excel", "Power Query", "Pivot Tables"],
-      image: "/projects/olympics.jpeg",
+      image: "/projects/thumbnail.jpg",
       points: [
         "Developed Excel analytics dashboard using Olympic data",
         "Applied Power Query for data extraction, transformation, normalization",

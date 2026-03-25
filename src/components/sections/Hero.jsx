@@ -1,43 +1,20 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useSpring, useMotionValue, AnimatePresence } from 'motion/react';
+import { motion, useSpring, AnimatePresence } from 'motion/react';
 import { portfolioData } from '../../data/portfolioData';
-import { LinkedinLogo, GithubLogo, EnvelopeSimple, Copy, CheckIcon, LinkIcon } from '@phosphor-icons/react';
+import { LinkedinLogo, GithubLogo, EnvelopeSimple, Copy, Check, Link as LinkIcon } from '@phosphor-icons/react';
 
-function MagneticSocialButton({ href, icon: Icon, bgClass, children }) {
-  const ref = useRef(null);
-  const x = useSpring(0, { stiffness: 400, damping: 20 });
-  const y = useSpring(0, { stiffness: 400, damping: 20 });
-
-  const handleMouseMove = (e) => {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
-    x.set((e.clientX - cx) * 0.25);
-    y.set((e.clientY - cy) * 0.25);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
+function SocialButton({ href, icon: Icon, label, bgClass }) {
   return (
     <motion.a
-      ref={ref}
       href={href}
       target={href.startsWith('mailto') ? undefined : '_blank'}
       rel={href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
-      style={{ x, y }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      whileHover={{ scale: 1.08 }}
-      whileTap={{ scale: 0.95 }}
-      transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-      className={`flex items-center gap-2 px-2.5 py-2.5 text-white rounded-full font-medium text-sm shadow-sm cursor-pointer ${bgClass}`}
+      whileHover={{ y: -1 }}
+      whileTap={{ scale: 0.97 }}
+      className={`inline-flex items-center gap-2 px-3.5 py-2 text-white rounded-full text-[13px] font-medium shadow-sm cursor-pointer transition-opacity hover:opacity-90 ${bgClass}`}
     >
       <Icon weight="fill" className="w-4 h-4" />
-      {children}
+      <span>{label}</span>
     </motion.a>
   );
 }
@@ -53,7 +30,8 @@ const RoleText = ({ role, currentKey }) => {
   return (
     <motion.p
       key={currentKey}
-      className="text-xl md:text-2xl text-accent-matcha font-medium italic whitespace-nowrap absolute flex tracking-tight"
+      className="text-lg md:text-xl font-medium italic whitespace-nowrap absolute flex tracking-tight"
+      style={{ color: 'var(--ink-blue)' }}
     >
       {role.split('').map((char, i) => (
         <motion.span
@@ -86,7 +64,6 @@ function UrlCopyBar() {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      // Fallback
       const textArea = document.createElement('textarea');
       textArea.value = `https://${siteUrl}`;
       document.body.appendChild(textArea);
@@ -99,61 +76,59 @@ function UrlCopyBar() {
   };
 
   return (
-<motion.button
-  onClick={handleCopy}
-  whileTap={{ scale: 0.98 }}
-  whileHover={{ y: -1 }}
-  aria-label={copied ? "Copied to clipboard" : "Copy site URL"}
-  className="group relative flex w-full md:w-1/2 items-center justify-between rounded-full bg-foreground/5 py-2 pl-4 pr-2 font-sans text-sm transition-colors hover:bg-foreground/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500"
->
-  {/* Left: Icon + Text Label */}
-  <div className="flex items-center gap-3 overflow-hidden">
-    <span className="shrink-0 text-foreground/40">
-      <LinkIcon className="h-4 w-4" />
-    </span>
-    <span className="truncate font-medium tracking-tight text-foreground/60">
-      {siteUrl}
-    </span>
-  </div>
+    <motion.button
+      onClick={handleCopy}
+      whileTap={{ scale: 0.98 }}
+      whileHover={{ y: -1 }}
+      aria-label={copied ? "Copied to clipboard" : "Copy site URL"}
+      className="group relative flex w-full md:w-auto items-center justify-between rounded-full bg-foreground/5 py-2 pl-4 pr-2 font-sans text-sm transition-colors hover:bg-foreground/8 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+    >
+      <div className="flex items-center gap-3 overflow-hidden">
+        <span className="shrink-0 text-foreground/40">
+          <LinkIcon className="h-4 w-4" />
+        </span>
+        <span className="truncate font-medium tracking-tight text-foreground/50 font-mono text-xs">
+          {siteUrl}
+        </span>
+      </div>
 
-  {/* Right: Feedback Circle */}
-  <div
-    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors duration-300 cursor-pointer ${
-      copied 
-        ? 'bg-emerald-500/15 text-emerald-600' 
-        : 'bg-foreground/5 text-foreground/40 group-hover:text-foreground/80'
-    }`}
-  >
-    <AnimatePresence mode="wait" initial={false}>
-      {copied ? (
-        <motion.div
-          key="check"
-          initial={{ opacity: 0, scale: 0.5, rotate: -45 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          exit={{ opacity: 0, scale: 0.5 }}
-          transition={{ type: "spring", stiffness: 500, damping: 25 }}
-        >
-          <CheckIcon weight="bold" className="h-4 w-4" />
-        </motion.div>
-      ) : (
-        <motion.div
-          key="copy"
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.5 }}
-          transition={{ duration: 0.15 }}
-        >
-          <Copy weight="bold" className="h-4 w-4" />
-        </motion.div>
-      )}
-    </AnimatePresence>
-  </div>
-</motion.button>
+      <div
+        className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full ml-3 transition-colors duration-300 cursor-pointer ${
+          copied 
+            ? 'bg-emerald-500/15 text-emerald-600' 
+            : 'bg-foreground/5 text-foreground/40 group-hover:text-foreground/70'
+        }`}
+      >
+        <AnimatePresence mode="wait" initial={false}>
+          {copied ? (
+            <motion.div
+              key="check"
+              initial={{ opacity: 0, scale: 0.5, rotate: -45 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              exit={{ opacity: 0, scale: 0.5 }}
+              transition={{ type: "spring", stiffness: 500, damping: 25 }}
+            >
+              <Check weight="bold" className="h-3.5 w-3.5" />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="copy"
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.5 }}
+              transition={{ duration: 0.15 }}
+            >
+              <Copy weight="bold" className="h-3.5 w-3.5" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.button>
   );
 }
 
 export default function Hero() {
-  const { hero, about } = portfolioData;
+  const { hero } = portfolioData;
 
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
 
@@ -189,21 +164,33 @@ export default function Hero() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="flex flex-col gap-6 max-w-3xl"
+        className="flex flex-col gap-5 w-full"
       >
+        {/* Top status bar */}
+        <motion.div variants={item} className="flex items-center gap-4 text-xs text-muted-light font-mono">
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border/60 bg-surface/50">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            Available for work
+          </span>
+          <span className="hidden sm:inline text-muted-light/60">{hero.location}</span>
+        </motion.div>
+
         <motion.div variants={item} className="mb-2 relative">
           <img
             src={hero.avatar}
             alt={hero.name}
-            className="relative z-10 w-30 h-30 rounded-full object-cover shadow-lg bg-surface ring-2 ring-white"
+            className="relative z-10 w-24 h-24 rounded-full object-cover shadow-sm bg-surface ring-1 ring-border"
           />
         </motion.div>
 
         <motion.div variants={item} className="flex flex-col gap-2">
-          <h1 className="text-4xl md:text-5xl font-serif font-medium tracking-tight text-foreground">
+          <h1 className="text-3xl md:text-4xl font-heading tracking-tight" style={{ color: 'var(--ink-blue)' }}>
             {hero.name}
           </h1>
-          <div className="h-8 md:h-10 relative overflow-hidden flex items-center w-full perspective-[1000px] mask-[linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]">
+          <div className="h-7 md:h-8 relative overflow-hidden flex items-center w-full perspective-[1000px] mask-[linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]">
             <AnimatePresence mode="popLayout">
               <RoleText
                 key={currentRoleIndex}
@@ -214,7 +201,7 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        <motion.div variants={item} className="group text-base md:text-md text-muted leading-loose mt-2 font-light cursor-default relative z-20">
+        <motion.div variants={item} className="group text-[15px] text-muted leading-relaxed mt-2 font-normal cursor-default relative z-20 max-w-xl">
           I am a Computer Science student focused on {' '}
           <Highlight colorClass="bg-indigo-400">Data Science</Highlight> and {' '}
           <Highlight colorClass="bg-purple-400">Machine Learning</Highlight>, with experience in {' '}
@@ -232,15 +219,15 @@ export default function Hero() {
           <span className="font-medium text-foreground">automation systems</span> that turn complex datasets into practical insights and scalable solutions.
         </motion.div>
 
-        <motion.div variants={item} className="flex flex-wrap items-center gap-3 mt-6">
+        <motion.div variants={item} className="flex flex-wrap items-center gap-2.5 mt-4">
           {hero.linkedin && (
-            <MagneticSocialButton href={hero.linkedin} icon={LinkedinLogo} bgClass="bg-sky-600 hover:bg-sky-600/90" />
+            <SocialButton href={hero.linkedin} icon={LinkedinLogo} label="LinkedIn" bgClass="bg-[#0A66C2]" />
           )}
           {hero.github && (
-            <MagneticSocialButton href={hero.github} icon={GithubLogo} bgClass="bg-neutral-950 hover:bg-neutral-900/90" />
+            <SocialButton href={hero.github} icon={GithubLogo} label="GitHub" bgClass="bg-neutral-800 dark:bg-neutral-700" />
           )}
           {hero.email && (
-            <MagneticSocialButton href={`mailto:${hero.email}`} icon={EnvelopeSimple} bgClass="bg-accent-olive hover:bg-accent-olive/90" />
+            <SocialButton href={`mailto:${hero.email}`} icon={EnvelopeSimple} label="Email" bgClass="bg-[var(--ink-blue)]" />
           )}
 
           <UrlCopyBar />

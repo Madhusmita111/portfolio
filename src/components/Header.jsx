@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
-import { Sun, Moon } from '@phosphor-icons/react';
+import { Sun, Moon, FileText } from '@phosphor-icons/react';
 import { portfolioData } from '../data/portfolioData';
 import CVModal from './CVModal';
 import { useTheme } from '../context/ThemeContext';
@@ -18,8 +18,8 @@ export default function Header() {
     scrollY,
     [0, 50],
     theme === 'dark' 
-      ? ['rgba(20, 20, 20, 0.4)', 'rgba(20, 20, 20, 0.75)']
-      : ['rgba(252, 252, 250, 0.4)', 'rgba(252, 252, 250, 0.75)']
+      ? ['rgba(10, 10, 10, 0.4)', 'rgba(10, 10, 10, 0.80)']
+      : ['rgba(255, 255, 255, 0.4)', 'rgba(255, 255, 255, 0.80)']
   );
   
   const headerBorder = useTransform(
@@ -38,38 +38,38 @@ export default function Header() {
             backgroundColor: headerBg,
             borderColor: headerBorder,
           }}
-          className="w-full max-w-3xl h-14 rounded-full backdrop-blur-sm transition-all duration-300 pointer-events-auto flex items-center justify-between px-6"
+          className="w-full max-w-3xl h-12 rounded-full backdrop-blur-md border transition-all duration-300 pointer-events-auto flex items-center justify-between px-5"
         >
-          <motion.div style={{ opacity: nameOpacity, y: nameY }} className="font-serif text-base md:text-lg font-medium tracking-tight text-foreground truncate max-w-[50%]">
+          <motion.div style={{ opacity: nameOpacity, y: nameY }} className="text-sm font-medium tracking-tight text-foreground truncate max-w-[50%]">
             {portfolioData.hero.name}
           </motion.div>
-          <div className="flex items-center gap-2 md:gap-3 ml-auto">
-            {/* Theme Toggle Button */}
+          <div className="flex items-center gap-1.5 ml-auto">
+            {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="relative flex items-center justify-center w-9 h-9 rounded-full bg-surface/50 hover:bg-surface-matcha/80 border border-border-accent/40 text-foreground transition-all duration-300 overflow-hidden shadow-sm hover:shadow-olive-lift active:scale-95"
+              className="flex items-center justify-center w-8 h-8 rounded-full hover:bg-foreground/5 text-foreground/60 hover:text-foreground transition-all duration-200 active:scale-95"
               aria-label="Toggle theme"
             >
               <AnimatePresence mode="wait" initial={false}>
                 {theme === 'dark' ? (
                   <motion.div
                     key="sun"
-                    initial={{ y: 20, opacity: 0, rotate: -90 }}
+                    initial={{ y: 12, opacity: 0, rotate: -90 }}
                     animate={{ y: 0, opacity: 1, rotate: 0 }}
-                    exit={{ y: -20, opacity: 0, rotate: 90 }}
-                    transition={{ duration: 0.2 }}
+                    exit={{ y: -12, opacity: 0, rotate: 90 }}
+                    transition={{ duration: 0.15 }}
                   >
-                    <Sun weight="fill" className="w-4 h-4 text-amber-200" />
+                    <Sun weight="bold" className="w-4 h-4" />
                   </motion.div>
                 ) : (
                   <motion.div
                     key="moon"
-                    initial={{ y: 20, opacity: 0, rotate: -90 }}
+                    initial={{ y: 12, opacity: 0, rotate: -90 }}
                     animate={{ y: 0, opacity: 1, rotate: 0 }}
-                    exit={{ y: -20, opacity: 0, rotate: 90 }}
-                    transition={{ duration: 0.2 }}
+                    exit={{ y: -12, opacity: 0, rotate: 90 }}
+                    transition={{ duration: 0.15 }}
                   >
-                    <Moon weight="fill" className="w-4 h-4 text-slate-600" />
+                    <Moon weight="bold" className="w-4 h-4" />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -78,9 +78,10 @@ export default function Header() {
             {/* Resume Button */}
             <button
               onClick={() => setIsCVOpen(true)}
-              className="flex items-center justify-center h-9 px-4 rounded-full bg-accent-matcha/10 hover:bg-accent-matcha/20 border border-accent-olive/20 hover:border-accent-olive/40 text-xs md:text-sm font-medium text-foreground transition-all duration-300 shadow-sm hover:shadow-olive-lift active:scale-95"
+              className="flex items-center gap-1.5 h-8 px-3 rounded-full hover:bg-foreground/5 text-xs font-medium text-foreground/60 hover:text-foreground transition-all duration-200 active:scale-95"
             >
-              <span className="hidden sm:inline">View Resume</span>
+              <FileText weight="bold" className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Resume</span>
               <span className="sm:hidden">CV</span>
             </button>
           </div>

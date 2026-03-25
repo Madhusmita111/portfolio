@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform, useInView } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
 
 export default function Section({ id, title, children, className = '' }) {
   const sectionRef = useRef(null);
@@ -10,7 +10,6 @@ export default function Section({ id, title, children, className = '' }) {
   });
 
   const lineWidth = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.08, margin: '0px 0px -60px 0px' });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -44,12 +43,12 @@ export default function Section({ id, title, children, className = '' }) {
     >
       {title && (
         <motion.div variants={itemVariants} className="flex flex-col gap-3">
-          <h2 className="text-4xl md:text-5xl font-serif font-medium tracking-tight text-foreground">
+          <h2 className="text-2xl md:text-3xl font-heading tracking-tight" style={{ color: 'var(--ink-blue)' }}>
             {title}
           </h2>
           <motion.div
             style={{ width: lineWidth }}
-            className="h-[2px] rounded-full bg-linear-to-r from-accent-matcha/60 via-accent-olive/40 to-transparent"
+            className="h-px rounded-full bg-border"
           />
         </motion.div>
       )}
