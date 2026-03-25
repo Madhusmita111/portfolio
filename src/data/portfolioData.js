@@ -6,7 +6,7 @@ export const portfolioData = {
     email: "tmadhusmita011@gmail.com",
     linkedin: "https://www.linkedin.com/in/madhusmitatalukdar",
     github: "https://github.com/Madhusmita111",
-    location: "Nalbari, Assam, India (781351)"
+    location: "Assam, India"
   },
   about: {
     tagline: "Building data-driven tools, analytical dashboards, and machine learning solutions.",
