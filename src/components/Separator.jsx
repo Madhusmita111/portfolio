@@ -165,7 +165,8 @@ export default function Separator({ showHint = false }) {
       {showHint && (
         <div className="flex items-end gap-1 mb-1 select-none pointer-events-none self-start pl-4 md:pl-0">
           <span className="text-[12px] font-heading text-muted-light italic tracking-wide opacity-60 leading-none">
-            hover to paint
+            <span className="hidden md:inline">hover to paint</span>
+            <span className="md:hidden inline">tap to paint</span>
           </span>
           {/* Hand-drawn cursive arrow pointing down-right */}
           <svg width="28" height="22" viewBox="0 0 28 22" fill="none" className="text-muted-light opacity-50 -mb-0.5">

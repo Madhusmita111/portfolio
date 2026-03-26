@@ -28,7 +28,7 @@ export default function Resume() {
                   {edu.grade && (
                     <>
                       <span className="mx-1.5 opacity-40">·</span>
-                      <span className="inline-flex items-center font-medium px-1.5 py-0.5 rounded bg-[var(--ink-blue)]/10 text-[var(--ink-blue)] border border-[var(--ink-blue)]/20 text-xs">
+                      <span className="inline-flex items-center font-medium px-1.5 py-0.5 rounded bg-ink/10 text-ink border border-ink/20 text-xs">
                         {edu.grade}
                       </span>
                     </>

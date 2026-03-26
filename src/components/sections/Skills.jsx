@@ -65,7 +65,7 @@ export default function Skills() {
             transition={{ duration: 0.4, delay: idx * 0.05 }}
             className="flex flex-col gap-2"
           >
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-light">
+            <h3 className="text-[10px] font-semibold uppercase text-muted-light/50">
               {category}
             </h3>
             <div className="flex flex-wrap gap-1">
