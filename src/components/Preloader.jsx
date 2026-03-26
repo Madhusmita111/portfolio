@@ -143,7 +143,7 @@ export default function Preloader({ onFinish }) {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6, ease: 'easeInOut' }}
-          className="fixed inset-0 z-[999] flex items-center justify-center bg-background"
+          className="fixed inset-0 z-999 flex items-center justify-center bg-background"
         >
           <canvas
             ref={canvasRef}

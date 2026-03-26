@@ -32,7 +32,7 @@ const skillIconMap = {
 function SkillItem({ skill }) {
   const iconPath = skillIconMap[skill];
   return (
-    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-foreground/3 transition-colors cursor-default">
+    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-foreground/5 dark:hover:bg-foreground/10 transition-colors cursor-default">
       {iconPath ? (
         <img
           src={iconPath}

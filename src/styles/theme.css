@@ -1,183 +1,57 @@
 /* src/styles/theme.css */
 
-/* Vercel / Geist-inspired — white/neutral + ink blue */
+/* ═══════════ Light Mode ═══════════ */
 :root {
-  /* Background colors */
+  /* Backgrounds */
   --bg-primary: #ffffff;
   --bg-secondary: #fafafa;
   --bg-tertiary: #f5f5f5;
 
-  /* Text colors */
+  /* Text */
   --text-primary: #171717;
   --text-secondary: #525252;
   --text-tertiary: #a3a3a3;
 
-  /* Ink blue for titles & icons */
+  /* Ink blue accent */
   --ink-blue: #1e3a5f;
   --ink-blue-light: #2d5a8e;
 
-  /* Border colors */
+  /* Borders */
   --border-light: #e5e5e5;
   --border-medium: #d4d4d4;
 
-  /* Accent colors — ink blue based */
+  /* Accent */
   --accent-primary: #1e3a5f;
   --accent-hover: #16304f;
-  --accent-matcha: #1e3a5f;
-  --accent-olive-deep: #1e3a5f;
-
-  /* UI elements */
-  --pill-bg: #f5f5f5;
-  --panel-matcha-top: #ffffff;
-  --panel-matcha-bottom: #fafafa;
-  --surface-matcha-soft: #fafafa;
-  --surface-matcha-chip: #f5f5f5;
-
-  /* Structural accents */
-  --border-accent-soft: #e5e5e5;
-  --border-accent-medium: #d4d4d4;
-
-  /* Glow tones — very subtle */
-  --glow-matcha-soft: rgba(30, 58, 95, 0.06);
-  --glow-matcha-medium: rgba(30, 58, 95, 0.10);
-  --glow-matcha-trail: rgba(30, 58, 95, 0.04);
-  --glow-clear: transparent;
-
-  /* Media overlays */
-  --media-overlay-strong: rgba(0, 0, 0, 0.25);
-  --media-overlay-soft: rgba(0, 0, 0, 0.03);
-  --modal-overlay-strong: rgba(0, 0, 0, 0.40);
-  --modal-overlay-soft: rgba(0, 0, 0, 0.06);
-
-  /* Shadows — neutral */
-  --shadow-olive-soft: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-olive-lift: 0 4px 12px rgba(0, 0, 0, 0.08);
-
-  /* Optional highlight */
-  --accent-soft: #f5f5f5;
-
-  /* Ambient Background Orbs — removed, keeping transparent */
-  --orb-olive: transparent;
-  --orb-matcha: transparent;
-  --orb-sage: transparent;
-
-  /* Glass effects */
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(0, 0, 0, 0.06);
-  --glass-glow: rgba(30, 58, 95, 0.06);
-
-  /* Timeline */
-  --timeline-line: rgba(0, 0, 0, 0.08);
-  --timeline-dot: #1e3a5f;
-  --timeline-dot-glow: rgba(30, 58, 95, 0.20);
-
-  /* Card shimmer */
-  --shimmer-start: transparent;
-  --shimmer-mid: rgba(30, 58, 95, 0.06);
-  --shimmer-end: transparent;
-
-  /* Aurora — subtle ink blue */
-  --aurora-1: #1e3a5f;
-  --aurora-2: #2d5a8e;
-  --aurora-3: #1e3a5f;
-  --aurora-4: #16304f;
 
   /* Separator grid */
   --separator-line: rgba(0, 0, 0, 0.06);
 }
 
-/* === Keyframes === */
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-@keyframes aurora-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-/* === Dark Mode === */
+/* ═══════════ Dark Mode ═══════════ */
 .dark {
-  /* Background colors */
-  --bg-primary: #000000;
-  --bg-secondary: #0a0a0a;
-  --bg-tertiary: #111111;
+  /* Backgrounds — slightly lifted from pure black for depth */
+  --bg-primary: #09090b;
+  --bg-secondary: #131316;
+  --bg-tertiary: #1a1a1f;
 
-  /* Text colors */
-  --text-primary: #ffffff;
+  /* Text — bright white with warm muted tones */
+  --text-primary: #fafafa;
   --text-secondary: #a1a1aa;
   --text-tertiary: #71717a;
 
-  /* Ink blue for titles — balanced intensity for dark mode */
-  --ink-blue: #7ba8d6;
-  --ink-blue-light: #9cc0e3;
+  /* Ink blue — luminous and vibrant in dark */
+  --ink-blue: #7db4e0;
+  --ink-blue-light: #a3ceed;
 
-  /* Border colors */
-  --border-light: #27272a;
+  /* Borders — visible zinc edges */
+  --border-light: #2a2a30;
   --border-medium: #3f3f46;
 
-  /* Accent colors */
-  --accent-primary: #7ba8d6;
-  --accent-hover: #9cc0e3;
-  --accent-matcha: #7ba8d6;
-  --accent-olive-deep: #7ba8d6;
-
-  /* UI elements */
-  --pill-bg: #18181b;
-  --panel-matcha-top: #0a0a0a;
-  --panel-matcha-bottom: #000000;
-  --surface-matcha-soft: #0a0a0a;
-  --surface-matcha-chip: #18181b;
-
-  /* Structural accents */
-  --border-accent-soft: #27272a;
-  --border-accent-medium: #3f3f46;
-
-  /* Glow tones */
-  --glow-matcha-soft: rgba(123, 168, 214, 0.08);
-  --glow-matcha-medium: rgba(123, 168, 214, 0.12);
-  --glow-matcha-trail: rgba(123, 168, 214, 0.06);
-
-  /* Media overlays */
-  --media-overlay-strong: rgba(0, 0, 0, 0.70);
-  --media-overlay-soft: rgba(0, 0, 0, 0.20);
-  --modal-overlay-strong: rgba(0, 0, 0, 0.80);
-  --modal-overlay-soft: rgba(0, 0, 0, 0.15);
-
-  /* Shadows */
-  --shadow-olive-soft: 0 1px 3px rgba(0, 0, 0, 0.30);
-  --shadow-olive-lift: 0 4px 12px rgba(0, 0, 0, 0.40);
-
-  /* Optional highlight */
-  --accent-soft: #18181b;
-
-  /* Ambient Background Orbs */
-  --orb-olive: transparent;
-  --orb-matcha: transparent;
-  --orb-sage: transparent;
-
-  /* Glass effects */
-  --glass-bg: rgba(0, 0, 0, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-glow: rgba(123, 168, 214, 0.08);
-
-  /* Timeline */
-  --timeline-line: rgba(255, 255, 255, 0.08);
-  --timeline-dot: #7ba8d6;
-  --timeline-dot-glow: rgba(123, 168, 214, 0.25);
-
-  /* Card shimmer */
-  --shimmer-start: transparent;
-  --shimmer-mid: rgba(123, 168, 214, 0.08);
-  --shimmer-end: transparent;
-
-  /* Aurora */
-  --aurora-1: #1e3a5f;
-  --aurora-2: #2d5a8e;
-  --aurora-3: #16304f;
-  --aurora-4: #1e3a5f;
+  /* Accent */
+  --accent-primary: #7db4e0;
+  --accent-hover: #a3ceed;
 
   /* Separator grid */
-  --separator-line: rgba(255, 255, 255, 0.08);
+  --separator-line: rgba(255, 255, 255, 0.07);
 }

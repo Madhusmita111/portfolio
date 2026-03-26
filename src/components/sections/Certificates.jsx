@@ -30,7 +30,7 @@ function CertificatesModal({ certificates, initialIndex, isOpen, onClose }) {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2 }}
-        className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-8"
+        className="fixed inset-0 z-200 flex items-center justify-center p-4 md:p-8"
         onClick={onClose}
       >
         {/* Backdrop */}
@@ -43,7 +43,7 @@ function CertificatesModal({ certificates, initialIndex, isOpen, onClose }) {
           exit={{ opacity: 0, y: 30, scale: 0.95 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
           onClick={(e) => e.stopPropagation()}
-          className="relative z-10 w-full max-w-4xl bg-background border border-border/50 rounded-xl overflow-hidden shadow-2xl flex flex-col h-[85vh] md:h-[90vh]"
+          className="relative z-10 w-full max-w-4xl bg-background border border-border rounded-xl overflow-hidden shadow-2xl dark:shadow-black/50 flex flex-col h-[85vh] md:h-[90vh]"
         >
           {/* Header */}
           <div className="flex items-center justify-between px-6 py-4 border-b border-border/40 shrink-0 bg-background/80 backdrop-blur-sm">
@@ -139,7 +139,7 @@ function CertificateCard({ cert, index, onClick }) {
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
       style={{ rotateX, rotateY, transformPerspective: 600 }}
-      className="group relative rounded-xl border border-border/60 hover:border-border-heavy/60 bg-surface/30 hover:bg-surface/60 transition-all duration-300 cursor-pointer will-change-transform overflow-hidden"
+      className="group relative rounded-xl border border-border/60 hover:border-border bg-surface/40 hover:bg-surface transition-all duration-300 cursor-pointer will-change-transform overflow-hidden dark:bg-surface/60 dark:hover:bg-surface dark:border-border/70 dark:hover:border-border"
     >
       <div className="flex items-start gap-4 p-5">
         {/* Icon/Logo */}

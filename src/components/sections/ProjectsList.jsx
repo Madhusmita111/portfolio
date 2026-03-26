@@ -100,7 +100,7 @@ function ProjectModal({ project, isOpen, onClose }) {
             exit={{ opacity: 0, y: 30, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative z-10 w-full max-w-2xl bg-background border border-border/50 rounded-xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
+            className="relative z-10 w-full max-w-2xl bg-background border border-border rounded-xl overflow-hidden shadow-2xl dark:shadow-black/50 flex flex-col max-h-[90vh]"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 md:py-5 border-b border-border/40 shrink-0 bg-background/80 backdrop-blur-md">
@@ -141,7 +141,7 @@ function ProjectModal({ project, isOpen, onClose }) {
                 </div>
               </div>
 
-              <div className="w-full aspect-video md:aspect-[2/1] rounded-lg md:rounded-xl overflow-hidden border border-border/40 bg-surface/50 shrink-0">
+              <div className="w-full aspect-video md:aspect-2/1 rounded-lg md:rounded-xl overflow-hidden border border-border bg-surface shrink-0">
                 <img
                   src={project.image}
                   alt={project.title}
@@ -215,7 +215,7 @@ function ProjectCard({ project, index, onClick }) {
           inView: { opacity: 1, y: 0, transition: { duration: 0.5, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] } },
         }}
         onClick={() => onClick(project)}
-        className="group relative rounded-lg bg-surface/30 hover:bg-surface/60 border border-border/30 hover:border-border/60 transition-colors duration-300 overflow-visible cursor-pointer flex flex-col"
+        className="group relative rounded-lg bg-surface/40 hover:bg-surface border border-border/50 hover:border-border transition-colors duration-300 overflow-visible cursor-pointer flex flex-col dark:bg-surface/60 dark:hover:bg-surface dark:border-border/70 dark:hover:border-border"
       >
         <div className="w-full h-48 overflow-hidden bg-surface rounded-lg shrink-0 relative shadow-md shadow-foreground/5">
           <img

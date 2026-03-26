@@ -13,7 +13,7 @@ export default function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="relative w-full rounded-xl border border-border/60 bg-surface/50 overflow-hidden"
+        className="relative w-full rounded-xl border border-border/60 bg-surface/50 overflow-hidden dark:bg-surface/70 dark:border-border"
       >
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center text-center px-6 py-12 md:py-14 gap-5">
