@@ -21,6 +21,18 @@
 
   --color-ink: var(--ink-blue);
   --color-ink-light: var(--ink-blue-light);
+
+  --color-card: var(--card-bg);
+  --color-card-hover: var(--card-bg-hover);
+  --color-card-border: var(--card-border);
+  --color-card-border-hover: var(--card-border-hover);
+  --color-tooltip: var(--tooltip-bg);
+  --color-tooltip-border: var(--tooltip-border);
+
+  --color-btn-resume: var(--btn-resume);
+  --color-btn-linkedin: var(--btn-linkedin);
+  --color-btn-github: var(--btn-github);
+  --color-btn-email: var(--btn-email);
   
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
   --font-mono: "IBM Plex Mono", "Geist Mono", ui-monospace, monospace;

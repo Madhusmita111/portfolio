@@ -16,20 +16,15 @@ export default function HomeView() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4 }}
-      className="flex flex-col gap-10 md:gap-14 w-full pb-16"
+      className="flex flex-col gap-20 md:gap-32 w-full pb-20"
     >
       <Hero />
       <Separator showHint />
       <ProjectsList />
-      <Separator />
       <Skills />
-      <Separator />
       <Resume />
-      <Separator />
       <Achievements />
-      <Separator />
       <Certificates />
-      <Separator />
       <Contact />
     </motion.div>
   );

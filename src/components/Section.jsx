@@ -39,7 +39,7 @@ export default function Section({ id, title, children, className = '' }) {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.08, margin: '0px 0px -60px 0px' }}
-      className={`w-full flex flex-col gap-10 md:gap-14 ${className}`}
+      className={`w-full flex flex-col gap-6 md:gap-10 ${className}`}
     >
       {title && (
         <motion.div variants={itemVariants} className="flex flex-col gap-3">

@@ -139,7 +139,7 @@ function CertificateCard({ cert, index, onClick }) {
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
       style={{ rotateX, rotateY, transformPerspective: 600 }}
-      className="group relative rounded-xl border border-border/60 hover:border-border bg-surface/40 hover:bg-surface transition-all duration-300 cursor-pointer will-change-transform overflow-hidden dark:bg-surface/60 dark:hover:bg-surface dark:border-border/70 dark:hover:border-border"
+      className="group relative rounded-xl border border-card-border hover:border-card-border-hover bg-card hover:bg-card-hover transition-all duration-300 cursor-pointer will-change-transform overflow-hidden"
     >
       <div className="flex items-start gap-4 p-5">
         {/* Icon/Logo */}

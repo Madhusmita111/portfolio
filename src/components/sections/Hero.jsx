@@ -16,7 +16,7 @@ function SocialButton({ href, icon: Icon, label, bgClass, onClick }) {
       onClick={onClick}
       whileHover={{ y: -1 }}
       whileTap={{ scale: 0.97 }}
-      className={`inline-flex items-center gap-2 px-3.5 py-2 text-white rounded-full text-[13px] font-medium shadow-sm cursor-pointer transition-opacity hover:opacity-90 ${bgClass}`}
+      className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-full text-[13px] font-medium shadow-sm cursor-pointer transition-opacity hover:opacity-90 ${bgClass}`}
     >
       <Icon weight="fill" className="w-4 h-4" />
       <span>{label}</span>
@@ -100,7 +100,7 @@ function CVModal({ isOpen, onClose }) {
                 <a
                   href="/pdf/MadhusmitaCV.pdf"
                   download
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-foreground text-background text-xs font-medium hover:opacity-90 transition-opacity"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-btn-resume text-white text-xs font-medium hover:opacity-90 transition-opacity"
                 >
                   <DownloadSimple weight="bold" className="w-3.5 h-3.5" />
                   Download
@@ -162,7 +162,7 @@ export default function Hero() {
 
   return (
     <>
-      <section className="relative flex flex-col items-start justify-center w-full pt-8 md:pt-4 pb-8 md:pb-16">
+      <section className="relative flex flex-col items-start justify-center w-full pt-8 md:pt-4 pb-4 md:pb-6">
         <motion.div
           variants={container}
           initial="hidden"
@@ -214,16 +214,16 @@ export default function Hero() {
           </motion.div>
 
           <motion.div variants={item} className="flex flex-wrap items-center gap-2.5 mt-4">
-            <SocialButton onClick={() => setShowCV(true)} icon={FileText} label="Resume" bgClass="bg-foreground text-background" />
+            <SocialButton onClick={() => setShowCV(true)} icon={FileText} label="Resume" bgClass="bg-btn-resume text-white" />
 
             {hero.linkedin && (
-              <SocialButton href={hero.linkedin} icon={LinkedinLogo} label="LinkedIn" bgClass="bg-[#0A66C2]" />
+              <SocialButton href={hero.linkedin} icon={LinkedinLogo} label="LinkedIn" bgClass="bg-btn-linkedin text-white" />
             )}
             {hero.github && (
-              <SocialButton href={hero.github} icon={GithubLogo} label="GitHub" bgClass="bg-neutral-800 dark:bg-neutral-700" />
+              <SocialButton href={hero.github} icon={GithubLogo} label="GitHub" bgClass="bg-btn-github text-white" />
             )}
             {hero.email && (
-              <SocialButton href={`mailto:${hero.email}`} icon={EnvelopeSimple} label="Email" bgClass="bg-[var(--ink-blue)]" />
+              <SocialButton href={`mailto:${hero.email}`} icon={EnvelopeSimple} label="Email" bgClass="bg-btn-email text-white" />
             )}
           </motion.div>
         </motion.div>

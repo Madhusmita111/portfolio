@@ -13,7 +13,7 @@ export default function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="relative w-full rounded-xl border border-border/60 bg-surface/50 overflow-hidden dark:bg-surface/70 dark:border-border"
+        className="relative w-full rounded-xl border border-card-border bg-card overflow-hidden"
       >
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center text-center px-6 py-12 md:py-14 gap-5">
@@ -22,8 +22,7 @@ export default function Contact() {
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
             transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.2 }}
-            className="w-12 h-12 rounded-xl flex items-center justify-center"
-            style={{ background: 'var(--ink-blue)' }}
+            className="w-12 h-12 rounded-xl flex items-center justify-center bg-btn-email"
           >
             <PaperPlaneTilt weight="fill" className="w-5 h-5 text-white" />
           </motion.div>
@@ -33,7 +32,8 @@ export default function Contact() {
               Let's Work Together
             </h2>
             <p className="text-sm text-muted leading-relaxed">
-              Open to new projects, creative ideas, and opportunities. Drop me a line!
+              Open to new projects, creative ideas, and opportunities.
+              <br /> Drop me a line!
             </p>
           </div>
 
@@ -42,8 +42,7 @@ export default function Contact() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               href={`mailto:${hero.email}`}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white text-sm font-medium transition-opacity hover:opacity-90 shadow-sm"
-              style={{ background: 'var(--ink-blue)' }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white text-sm font-medium transition-opacity hover:opacity-90 shadow-sm bg-btn-email"
             >
               Get in Touch
               <ArrowRight weight="bold" className="w-4 h-4" />
@@ -54,7 +53,7 @@ export default function Contact() {
                 href={hero.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border/60 text-foreground/70 hover:text-foreground hover:border-border-heavy text-sm font-medium transition-all"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-card-border text-foreground/70 hover:text-foreground hover:border-card-border-hover text-sm font-medium transition-all"
               >
                 Connect on LinkedIn
               </a>

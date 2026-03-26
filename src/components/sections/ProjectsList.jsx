@@ -58,11 +58,11 @@ function ProjectTooltip({ project, x, y, visible }) {
           exit={{ opacity: 0, y: 8, scale: 0.95 }}
           transition={{ duration: 0.15 }}
           style={{ left: x, top: y }}
-          className="fixed z-50 pointer-events-none w-auto max-w-[280px] p-3.5 rounded-xl bg-surface text-foreground shadow-lg border border-surface/10"
+          className="fixed z-50 pointer-events-none w-auto max-w-[280px] p-3.5 rounded-xl bg-tooltip text-foreground shadow-lg border border-tooltip-border"
         >
           <div className="flex flex-wrap gap-1.5 mb-2.5">
             {project.tech.map((t, i) => (
-              <span key={i} className="text-[10px] font-medium bg-foreground/5 px-2 py-0.5 rounded-full">
+              <span key={i} className="text-[10px] font-medium bg-foreground/5 dark:bg-foreground/10 px-2 py-0.5 rounded-full">
                 {t}
               </span>
             ))}
@@ -215,7 +215,7 @@ function ProjectCard({ project, index, onClick }) {
           inView: { opacity: 1, y: 0, transition: { duration: 0.5, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] } },
         }}
         onClick={() => onClick(project)}
-        className="group relative rounded-lg bg-surface/40 hover:bg-surface border border-border/50 hover:border-border transition-colors duration-300 overflow-visible cursor-pointer flex flex-col dark:bg-surface/60 dark:hover:bg-surface dark:border-border/70 dark:hover:border-border"
+        className="group relative rounded-lg bg-card hover:bg-card-hover border border-card-border hover:border-card-border-hover transition-colors duration-300 overflow-visible cursor-pointer flex flex-col"
       >
         <div className="w-full h-48 overflow-hidden bg-surface rounded-lg shrink-0 relative shadow-md shadow-foreground/5">
           <img
