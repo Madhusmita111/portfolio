@@ -9,9 +9,9 @@ export const portfolioData = {
     location: "Nalbari, Assam, India (781351)"
   },
   about: {
-    tagline: "Building data-driven tools, analytical dashboards, and machine learning solutions.",
+    tagline: "Building Intelligent Systems with Data & AI",
 
-    description: "I’m a Computer Science student working with Python, SQL, and Power BI to analyze data and uncover patterns. My projects explore phishing detection, crime analytics, and trend analysis, turning complex datasets into actionable insights."
+    description: "Computer Science student specializing in AI and data science, creating machine learning systems and agentic platforms that turn complex data into predictive insights and real-world solutions."
   },
   skills: {
     "Languages": [
@@ -49,9 +49,27 @@ export const portfolioData = {
   }
   ,
   projects: [
+    // {
+    //   title: "Dowel",
+    //   // date: "May – July 2025",
+    //   tech: ["Python", "Flask", "Scikit-learn", "XGBoost", "Pandas", "NumPy", "REST API"],
+    //   image: "/projects/url-checker.png",
+    //   points: [
+    //     "Developed a machine learning–based web application to detect and classify malicious URLs for phishing prevention",
+    //     "Designed a feature extraction pipeline generating 30+ lexical, host-based and other attributes from 70K+ URLs",
+    //     "Engineered 30+ lexical and domain-based features from 70K+ URLs",
+    //     "Trained and evaluated multiple ML models (Random Forest, XGBoost, SVM, Logistic Regression, KNN)",
+    //     "Achieved up to 97% accuracy",
+    //     "Evaluated model using precision, recall, F1-score, and cross-validation",
+    //     "Deployed the model as a scalable REST API using Flask",
+    //     "Enabled real-time URL classification through a web interface"
+    //   ],
+    //   liveLink: "#",
+    //   githubLink: "https://github.com/Madhusmita111/smart-URL-safety-checker"
+    // },
     {
       title: "Smart URL Safety Checker",
-      date: "May – July 2025",
+      // date: "May – July 2025",
       tech: ["Python", "Flask", "Scikit-learn", "XGBoost", "Pandas", "NumPy", "REST API"],
       image: "/projects/url-checker.png",
       points: [
@@ -69,7 +87,7 @@ export const portfolioData = {
     },
     {
       title: "What2Wear AI Chatbot",
-      date: "May 2025",
+      // date: "May 2025",
       tech: ["Python", "JavaScript", "HTML/CSS", "API Integration"],
       image: "/projects/what2wear.png",
       points: [
@@ -84,7 +102,7 @@ export const portfolioData = {
     },
     {
       title: "Crime Pattern Analysis",
-      date: "2025",
+      // date: "2025",
       tech: ["Python", "Pandas", "NumPy", "Scikit-learn", "Matplotlib", "Seaborn", "GeoPandas", "Google Colab"],
       image: "/projects/crime.jpeg",
       points: [
@@ -102,7 +120,7 @@ export const portfolioData = {
     },
     {
       title: "Reddit–Google Trends Engagement Analysis",
-      date: "December 2025",
+      // date: "December 2025",
       tech: ["Power BI", "Data Analytics", "Data Modelling"],
       image: "/projects/reddit.jpeg",
       points: [
@@ -118,7 +136,7 @@ export const portfolioData = {
     },
     {
       title: "Olympic Dashboard",
-      date: "April 2025",
+      // date: "April 2025",
       tech: ["Excel", "Power Query", "Pivot Tables"],
       image: "/projects/olympics.jpeg",
       points: [
@@ -136,7 +154,7 @@ export const portfolioData = {
     {
       institution: "Lovely Professional University",
       degree: "Bachelor of Technology (B.Tech.) in Computer Science Engineering",
-      grade: "CGPA: 7.83",
+      // grade: "CGPA: 7.83",
       date: "2023 – Present"
     }
   ],
@@ -163,7 +181,7 @@ export const portfolioData = {
       titleHtml: "Authored <span class='relative inline-block px-1 mx-0.5 transition-colors duration-300 z-10 group-hover:text-neutral-950 dark:group-hover:text-neutral-50'><span class='absolute inset-x-0 bottom-0 h-[3px] bg-indigo-400 transition-all duration-300 ease-out group-hover:h-full -z-10 rounded-sm opacity-70 group-hover:opacity-100'></span><span class='relative font-medium'>research paper</span></span> on security implications of integrating <span class='relative inline-block px-1 mx-0.5 transition-colors duration-300 z-10 group-hover:text-neutral-950 dark:group-hover:text-neutral-50'><span class='absolute inset-x-0 bottom-0 h-[3px] bg-sky-400 transition-all duration-300 ease-out group-hover:h-full -z-10 rounded-sm opacity-70 group-hover:opacity-100'></span><span class='relative font-medium'>Windows Copilot</span></span> into OS"
     },
     {
-      title: "Core member and graphic designer in Cisco iGen community and Encrypt Edge",
+      title: "Core technical member and graphic designer in Cisco iGen community and Encrypt Edge",
       titleHtml: "Core member and <span class='relative inline-block px-1 mx-0.5 transition-colors duration-300 z-10 group-hover:text-neutral-950 dark:group-hover:text-neutral-50'><span class='absolute inset-x-0 bottom-0 h-[3px] bg-pink-400 transition-all duration-300 ease-out group-hover:h-full -z-10 rounded-sm opacity-70 group-hover:opacity-100'></span><span class='relative font-medium'>graphic designer</span></span> in <span class='relative inline-block px-1 mx-0.5 transition-colors duration-300 z-10 group-hover:text-neutral-950 dark:group-hover:text-neutral-50'><span class='absolute inset-x-0 bottom-0 h-[3px] bg-teal-400 transition-all duration-300 ease-out group-hover:h-full -z-10 rounded-sm opacity-70 group-hover:opacity-100'></span><span class='relative font-medium'>Cisco iGen</span></span> community and Encrypt Edge"
     }
   ]
