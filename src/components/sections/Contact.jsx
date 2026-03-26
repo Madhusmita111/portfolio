@@ -17,19 +17,10 @@ export default function Contact() {
       >
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center text-center px-6 py-12 md:py-14 gap-5">
-          <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.2 }}
-            className="w-12 h-12 rounded-xl flex items-center justify-center bg-btn-email"
-          >
-            <PaperPlaneTilt weight="fill" className="w-5 h-5 text-white" />
-          </motion.div>
 
           <div className="flex flex-col gap-1.5 max-w-sm">
-            <h2 className="text-xl md:text-2xl font-heading tracking-tight" style={{ color: 'var(--ink-blue)' }}>
-              Let's Work Together
+            <h2 className="text-xl md:text-4xl font-heading tracking-tight" style={{ color: 'var(--ink-blue)' }}>
+              Let's Build Together
             </h2>
             <p className="text-sm text-muted leading-relaxed">
               Open to new projects, creative ideas, and opportunities.
@@ -42,7 +33,7 @@ export default function Contact() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               href={`mailto:${hero.email}`}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white text-sm font-medium transition-opacity hover:opacity-90 shadow-sm bg-btn-email"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white text-sm font-medium transition-opacity hover:opacity-90 shadow-sm bg-btn-linkedin"
             >
               Get in Touch
               <ArrowRight weight="bold" className="w-4 h-4" />
