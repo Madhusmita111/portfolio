@@ -50,10 +50,25 @@ export const portfolioData = {
   ,
   projects: [
     {
+      title: "Dowel",
+      date: "March 2026",
+      tech: ["Power BI", "Data Analytics", "Data Modelling"],
+      thumbnail: "",
+      image: "/projects/dowel.png",
+      points: [
+        "Developed a platform that translates natural language queries into executable SQL, allowing non-technical users to extract insights from Excel, CSV, databases, APIs, and web data.",
+        "Implemented a pipeline for schema understanding and model selection. It utilizes Prophet and XGBoost for prediction, and Isolation Forest for anomaly detection to generate data-driven insights.",
+        "Integrated probabilistic \"what-if\" analysis using Monte Carlo simulations. Built interactive dashboards featuring real-time alerts to enable faster decision-making and proactive anomaly detection."
+      ],
+      liveLink: "#",
+      githubLink: "#"
+    },
+    {
       title: "Smart URL Safety Checker",
       date: "May – July 2025",
       tech: ["Python", "Flask", "Scikit-learn", "XGBoost", "Pandas", "NumPy", "REST API"],
-      image: "/projects/thumbnail.jpg",
+      thumbnail: "/projects/thumbnail.jpg",
+      image: "/projects/url-checker.png",
       points: [
         "Developed a machine learning–based web application to detect and classify malicious URLs for phishing prevention",
         "Designed a feature extraction pipeline generating 30+ lexical, host-based and other attributes from 70K+ URLs",
@@ -71,7 +86,8 @@ export const portfolioData = {
       title: "What2Wear AI Chatbot",
       date: "May 2025",
       tech: ["Python", "JavaScript", "HTML/CSS", "API Integration"],
-      image: "/projects/thumbnail.jpg",
+      thumbnail: "/projects/thumbnail.jpg",
+      image: "/projects/what2wear.png",
       points: [
         "Implemented a rule-based recommendation engine for outfit suggestions",
         "Integrated external weather API and user preferences",
@@ -86,7 +102,8 @@ export const portfolioData = {
       title: "Crime Pattern Analysis",
       date: "2025",
       tech: ["Python", "Pandas", "NumPy", "Scikit-learn", "Matplotlib", "Seaborn", "GeoPandas", "Google Colab"],
-      image: "/projects/thumbnail.jpg",
+      thumbnail: "/projects/thumbnail.jpg",
+      image: "/projects/crime.jpeg",
       points: [
         "Processed and analyzed 250K+ crime records",
         "Performed preprocessing, cleaning, and feature engineering",
@@ -104,7 +121,8 @@ export const portfolioData = {
       title: "Reddit–Google Trends Engagement Analysis",
       date: "December 2025",
       tech: ["Power BI", "Data Analytics", "Data Modelling"],
-      image: "/projects/thumbnail.jpg",
+      thumbnail: "/projects/thumbnail.jpg",
+      image: "/projects/reddit.jpeg",
       points: [
         "Built interactive Power BI dashboard integrating Google Trends and Reddit data",
         "Designed relational data models",
@@ -120,7 +138,8 @@ export const portfolioData = {
       title: "Olympic Dashboard",
       date: "April 2025",
       tech: ["Excel", "Power Query", "Pivot Tables"],
-      image: "/projects/thumbnail.jpg",
+      thumbnail: "/projects/thumbnail.jpg",
+      image: "/projects/olympics.jpeg",
       points: [
         "Developed Excel analytics dashboard using Olympic data",
         "Applied Power Query for data extraction, transformation, normalization",
@@ -144,17 +163,20 @@ export const portfolioData = {
     {
       name: "SQL (Intermediate)",
       provider: "HackerRank",
-      icon: "/icons/Hackerrank.svg"
+      icon: "/icons/Hackerrank.svg",
+      link: "/certificates/hackerrankcertificate.jpeg"
     },
     {
       name: "Human Computer Interaction",
       provider: "NPTEL",
-      icon: "/icons/nptel.jpeg"
+      icon: "/icons/nptel.jpeg",
+      link: "/certificates/nptelcertificate.jpeg"
     },
     {
       name: "The Bits and Bites of Computer Networking",
       provider: "Coursera x Google",
       icon: "/icons/coursera.svg",
+      link: "/certificates/courseracertificate.jpeg"
     }
   ],
   awards: [

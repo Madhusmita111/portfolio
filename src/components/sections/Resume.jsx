@@ -27,8 +27,10 @@ export default function Resume() {
                   {edu.degree}
                   {edu.grade && (
                     <>
-                      {' · '}
-                      <span className="font-medium" style={{ color: 'var(--ink-blue)' }}>{edu.grade}</span>
+                      <span className="mx-1.5 opacity-40">·</span>
+                      <span className="inline-flex items-center font-medium px-1.5 py-0.5 rounded bg-[var(--ink-blue)]/10 text-[var(--ink-blue)] border border-[var(--ink-blue)]/20 text-xs">
+                        {edu.grade}
+                      </span>
                     </>
                   )}
                 </p>

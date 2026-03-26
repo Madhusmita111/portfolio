@@ -82,4 +82,13 @@
     color: var(--color-foreground);
     @apply antialiased tracking-tight font-sans selection:bg-accent selection:text-white transition-colors duration-300;
   }
+
+  /* Improve dark mode readability on surfaces */
+  .dark img {
+    filter: brightness(0.95) contrast(1.05);
+  }
+
+  .dark .glass-card {
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 4px 16px rgba(0, 0, 0, 0.5);
+  }
 }

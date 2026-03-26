@@ -1,21 +1,26 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useSpring, AnimatePresence } from 'motion/react';
+import { createPortal } from 'react-dom';
+import { motion, AnimatePresence } from 'motion/react';
 import { portfolioData } from '../../data/portfolioData';
-import { LinkedinLogo, GithubLogo, EnvelopeSimple, Copy, Check, Link as LinkIcon } from '@phosphor-icons/react';
+import { LinkedinLogo, GithubLogo, EnvelopeSimple, FileText, X, DownloadSimple } from '@phosphor-icons/react';
 
-function SocialButton({ href, icon: Icon, label, bgClass }) {
+function SocialButton({ href, icon: Icon, label, bgClass, onClick }) {
+  const Component = onClick ? motion.button : motion.a;
+  const isMail = href && href.startsWith('mailto');
+  
   return (
-    <motion.a
-      href={href}
-      target={href.startsWith('mailto') ? undefined : '_blank'}
-      rel={href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+    <Component
+      href={onClick ? undefined : href}
+      target={onClick || isMail ? undefined : '_blank'}
+      rel={onClick || isMail ? undefined : 'noopener noreferrer'}
+      onClick={onClick}
       whileHover={{ y: -1 }}
       whileTap={{ scale: 0.97 }}
       className={`inline-flex items-center gap-2 px-3.5 py-2 text-white rounded-full text-[13px] font-medium shadow-sm cursor-pointer transition-opacity hover:opacity-90 ${bgClass}`}
     >
       <Icon weight="fill" className="w-4 h-4" />
       <span>{label}</span>
-    </motion.a>
+    </Component>
   );
 }
 
@@ -54,83 +59,81 @@ const RoleText = ({ role, currentKey }) => {
   );
 };
 
-function UrlCopyBar() {
-  const [copied, setCopied] = useState(false);
-  const siteUrl = "madhufolio.vercel.app";
+/* ── CV Modal ── */
+function CVModal({ isOpen, onClose }) {
+  useEffect(() => {
+    if (isOpen) document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = 'unset';
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [isOpen]);
 
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(`https://${siteUrl}`);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      const textArea = document.createElement('textarea');
-      textArea.value = `https://${siteUrl}`;
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textArea);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  };
+  if (!isOpen) return null;
 
-  return (
-    <motion.button
-      onClick={handleCopy}
-      whileTap={{ scale: 0.98 }}
-      whileHover={{ y: -1 }}
-      aria-label={copied ? "Copied to clipboard" : "Copy site URL"}
-      className="group relative flex w-full md:w-auto items-center justify-between rounded-full bg-foreground/5 py-2 pl-4 pr-2 font-sans text-sm transition-colors hover:bg-foreground/8 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
-    >
-      <div className="flex items-center gap-3 overflow-hidden">
-        <span className="shrink-0 text-foreground/40">
-          <LinkIcon className="h-4 w-4" />
-        </span>
-        <span className="truncate font-medium tracking-tight text-foreground/50 font-mono text-xs">
-          {siteUrl}
-        </span>
-      </div>
+  return createPortal(
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          key="cv-modal"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          className="fixed inset-0 z-200 flex items-center justify-center p-4 md:p-8"
+          onClick={onClose}
+        >
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
 
-      <div
-        className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full ml-3 transition-colors duration-300 cursor-pointer ${
-          copied 
-            ? 'bg-emerald-500/15 text-emerald-600' 
-            : 'bg-foreground/5 text-foreground/40 group-hover:text-foreground/70'
-        }`}
-      >
-        <AnimatePresence mode="wait" initial={false}>
-          {copied ? (
-            <motion.div
-              key="check"
-              initial={{ opacity: 0, scale: 0.5, rotate: -45 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              exit={{ opacity: 0, scale: 0.5 }}
-              transition={{ type: "spring", stiffness: 500, damping: 25 }}
-            >
-              <Check weight="bold" className="h-3.5 w-3.5" />
-            </motion.div>
-          ) : (
-            <motion.div
-              key="copy"
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.5 }}
-              transition={{ duration: 0.15 }}
-            >
-              <Copy weight="bold" className="h-3.5 w-3.5" />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </motion.button>
+          <motion.div
+            initial={{ opacity: 0, y: 30, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 30, scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            onClick={(e) => e.stopPropagation()}
+            className="relative z-10 w-full max-w-3xl bg-background border border-border/50 rounded-xl overflow-hidden shadow-2xl flex flex-col h-[85vh] md:h-[90vh]"
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between px-5 py-3.5 border-b border-border/40 shrink-0 bg-background/80 backdrop-blur-sm">
+              <h3 className="text-lg font-heading tracking-tight" style={{ color: 'var(--ink-blue)' }}>
+                Resume
+              </h3>
+              <div className="flex items-center gap-2">
+                <a
+                  href="/pdf/MadhusmitaCV.pdf"
+                  download
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-foreground text-background text-xs font-medium hover:opacity-90 transition-opacity"
+                >
+                  <DownloadSimple weight="bold" className="w-3.5 h-3.5" />
+                  Download
+                </a>
+                <button
+                  onClick={onClose}
+                  className="w-8 h-8 rounded-full bg-surface hover:bg-foreground/5 flex items-center justify-center text-foreground/60 hover:text-foreground transition-all shrink-0 border border-border/60"
+                >
+                  <X weight="bold" className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            {/* PDF Viewer */}
+            <div className="flex-1 w-full bg-surface/30 p-2 md:p-4 overflow-hidden">
+              <iframe
+                src="/pdf/MadhusmitaCV.pdf"
+                title="Resume"
+                className="w-full h-full rounded-lg border border-border/40 bg-white"
+              />
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>,
+    document.body
   );
 }
 
 export default function Hero() {
   const { hero } = portfolioData;
-
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  const [showCV, setShowCV] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -158,80 +161,75 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative flex flex-col items-start justify-center w-full pt-16 md:pt-4 pb-8 md:pb-16">
-
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="flex flex-col gap-5 w-full"
-      >
-        {/* Top status bar */}
-        <motion.div variants={item} className="flex items-center gap-4 text-xs text-muted-light font-mono">
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
-            Available for work
-          </span>
-        </motion.div>
-
-        <motion.div variants={item} className="mb-2 relative">
-          <img
-            src={hero.avatar}
-            alt={hero.name}
-            className="relative z-10 w-24 h-24 rounded-full object-cover shadow-sm bg-surface ring-1 ring-border"
-          />
-        </motion.div>
-
-        <motion.div variants={item} className="flex flex-col gap-2">
-          <h1 className="text-3xl md:text-4xl font-heading tracking-tight" style={{ color: 'var(--ink-blue)' }}>
-            {hero.name}
-          </h1>
-          <div className="h-7 md:h-8 relative overflow-hidden flex items-center w-full perspective-[1000px] mask-[linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]">
-            <AnimatePresence mode="popLayout">
-              <RoleText
-                key={currentRoleIndex}
-                role={hero.roles[currentRoleIndex]}
-                currentKey={currentRoleIndex}
+    <>
+      <section className="relative flex flex-col items-start justify-center w-full pt-8 md:pt-4 pb-8 md:pb-16">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="flex flex-col gap-5 w-full"
+        >
+          {/* Avatar */}
+          <motion.div variants={item} className="mb-2 flex items-center cursor-default">
+            <div className="relative shrink-0">
+              <img
+                src={hero.avatar}
+                alt={hero.name}
+                className="relative z-10 w-24 h-24 rounded-full object-cover shadow-sm bg-surface ring-1 ring-border"
               />
-            </AnimatePresence>
-          </div>
-        </motion.div>
+            </div>
+          </motion.div>
 
-        <motion.div variants={item} className="group text-[15px] text-muted leading-relaxed mt-2 font-normal cursor-default relative z-20 max-w-xl">
-          I am a Computer Science student focused on {' '}
-          <Highlight colorClass="bg-indigo-400">Data Science</Highlight> and {' '}
-          <Highlight colorClass="bg-purple-400">Machine Learning</Highlight>, with experience in {' '}
-          <Highlight colorClass="bg-blue-400">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" className="w-[16px] h-[16px] relative -top-px inline-block" /> Python
-          </Highlight>, {' '}
-          <Highlight colorClass="bg-emerald-400">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL" className="w-[16px] h-[16px] relative -top-px inline-block" /> SQL
-          </Highlight>, and {' '}
-          <Highlight colorClass="bg-sky-500">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++" className="w-[16px] h-[16px] relative -top-px inline-block" /> C++
-          </Highlight>. I build {' '}
-          <span className="font-medium text-foreground">predictive models</span>, {' '}
-          <span className="font-medium text-foreground">data pipelines</span>, and {' '}
-          <span className="font-medium text-foreground">automation systems</span> that turn complex datasets into practical insights and scalable solutions.
-        </motion.div>
+          <motion.div variants={item} className="flex flex-col gap-2">
+            <h1 className="text-3xl md:text-4xl font-heading tracking-tight" style={{ color: 'var(--ink-blue)' }}>
+              {hero.name}
+            </h1>
+            <div className="h-7 md:h-8 relative overflow-hidden flex items-center w-full perspective-[1000px] mask-[linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]">
+              <AnimatePresence mode="popLayout">
+                <RoleText
+                  key={currentRoleIndex}
+                  role={hero.roles[currentRoleIndex]}
+                  currentKey={currentRoleIndex}
+                />
+              </AnimatePresence>
+            </div>
+          </motion.div>
 
-        <motion.div variants={item} className="flex flex-wrap items-center gap-2.5 mt-4">
-          {hero.linkedin && (
-            <SocialButton href={hero.linkedin} icon={LinkedinLogo} label="LinkedIn" bgClass="bg-[#0A66C2]" />
-          )}
-          {hero.github && (
-            <SocialButton href={hero.github} icon={GithubLogo} label="GitHub" bgClass="bg-neutral-800 dark:bg-neutral-700" />
-          )}
-          {hero.email && (
-            <SocialButton href={`mailto:${hero.email}`} icon={EnvelopeSimple} label="Email" bgClass="bg-[var(--ink-blue)]" />
-          )}
+          <motion.div variants={item} className="group text-[15px] text-muted leading-relaxed mt-2 font-normal cursor-default relative z-20 max-w-xl">
+            I am a Computer Science student focused on {' '}
+            <Highlight colorClass="bg-indigo-400">Data Science</Highlight> and {' '}
+            <Highlight colorClass="bg-purple-400">Machine Learning</Highlight>, with experience in {' '}
+            <Highlight colorClass="bg-blue-400">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" className="w-[16px] h-[16px] relative -top-px inline-block" /> Python
+            </Highlight>, {' '}
+            <Highlight colorClass="bg-emerald-400">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL" className="w-[16px] h-[16px] relative -top-px inline-block" /> SQL
+            </Highlight>, and {' '}
+            <Highlight colorClass="bg-sky-500">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++" className="w-[16px] h-[16px] relative -top-px inline-block" /> C++
+            </Highlight>. I build {' '}
+            <span className="font-medium text-foreground">predictive models</span>, {' '}
+            <span className="font-medium text-foreground">data pipelines</span>, and {' '}
+            <span className="font-medium text-foreground">automation systems</span> that turn complex datasets into practical insights and scalable solutions.
+          </motion.div>
 
-          <UrlCopyBar />
+          <motion.div variants={item} className="flex flex-wrap items-center gap-2.5 mt-4">
+            <SocialButton onClick={() => setShowCV(true)} icon={FileText} label="Resume" bgClass="bg-foreground text-background" />
+
+            {hero.linkedin && (
+              <SocialButton href={hero.linkedin} icon={LinkedinLogo} label="LinkedIn" bgClass="bg-[#0A66C2]" />
+            )}
+            {hero.github && (
+              <SocialButton href={hero.github} icon={GithubLogo} label="GitHub" bgClass="bg-neutral-800 dark:bg-neutral-700" />
+            )}
+            {hero.email && (
+              <SocialButton href={`mailto:${hero.email}`} icon={EnvelopeSimple} label="Email" bgClass="bg-[var(--ink-blue)]" />
+            )}
+          </motion.div>
         </motion.div>
-      </motion.div>
-    </section>
+      </section>
+
+      <CVModal isOpen={showCV} onClose={() => setShowCV(false)} />
+    </>
   );
 }

@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PageLayout from './components/PageLayout';
 import HomeView from './components/views/HomeView';
 import Footer from './components/Footer';
+import Preloader from './components/Preloader';
 
 function App() {
+  const [loaded, setLoaded] = useState(false);
+
   return (
-    <PageLayout>
-      <HomeView />
-      <Footer />
-    </PageLayout>
+    <>
+      {!loaded && <Preloader onFinish={() => setLoaded(true)} />}
+      <PageLayout>
+        <HomeView />
+        <Footer />
+      </PageLayout>
+    </>
   );
 }
 

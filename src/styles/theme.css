@@ -100,44 +100,44 @@
 /* === Dark Mode === */
 .dark {
   /* Background colors */
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #111111;
-  --bg-tertiary: #171717;
+  --bg-primary: #000000;
+  --bg-secondary: #0a0a0a;
+  --bg-tertiary: #111111;
 
   /* Text colors */
-  --text-primary: #ededed;
-  --text-secondary: #a3a3a3;
-  --text-tertiary: #737373;
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-tertiary: #71717a;
 
-  /* Ink blue for titles — lighter in dark */
-  --ink-blue: #6b9fd4;
-  --ink-blue-light: #8bb8e8;
+  /* Ink blue for titles — balanced intensity for dark mode */
+  --ink-blue: #7ba8d6;
+  --ink-blue-light: #9cc0e3;
 
   /* Border colors */
-  --border-light: #262626;
-  --border-medium: #333333;
+  --border-light: #27272a;
+  --border-medium: #3f3f46;
 
   /* Accent colors */
-  --accent-primary: #6b9fd4;
-  --accent-hover: #8bb8e8;
-  --accent-matcha: #6b9fd4;
-  --accent-olive-deep: #6b9fd4;
+  --accent-primary: #7ba8d6;
+  --accent-hover: #9cc0e3;
+  --accent-matcha: #7ba8d6;
+  --accent-olive-deep: #7ba8d6;
 
   /* UI elements */
-  --pill-bg: #1a1a1a;
-  --panel-matcha-top: #111111;
-  --panel-matcha-bottom: #0f0f0f;
-  --surface-matcha-soft: #141414;
-  --surface-matcha-chip: #1a1a1a;
+  --pill-bg: #18181b;
+  --panel-matcha-top: #0a0a0a;
+  --panel-matcha-bottom: #000000;
+  --surface-matcha-soft: #0a0a0a;
+  --surface-matcha-chip: #18181b;
 
   /* Structural accents */
-  --border-accent-soft: #262626;
-  --border-accent-medium: #333333;
+  --border-accent-soft: #27272a;
+  --border-accent-medium: #3f3f46;
 
   /* Glow tones */
-  --glow-matcha-soft: rgba(107, 159, 212, 0.08);
-  --glow-matcha-medium: rgba(107, 159, 212, 0.12);
-  --glow-matcha-trail: rgba(107, 159, 212, 0.06);
+  --glow-matcha-soft: rgba(123, 168, 214, 0.08);
+  --glow-matcha-medium: rgba(123, 168, 214, 0.12);
+  --glow-matcha-trail: rgba(123, 168, 214, 0.06);
 
   /* Media overlays */
   --media-overlay-strong: rgba(0, 0, 0, 0.70);
@@ -150,7 +150,7 @@
   --shadow-olive-lift: 0 4px 12px rgba(0, 0, 0, 0.40);
 
   /* Optional highlight */
-  --accent-soft: #1a1a1a;
+  --accent-soft: #18181b;
 
   /* Ambient Background Orbs */
   --orb-olive: transparent;
@@ -158,18 +158,18 @@
   --orb-sage: transparent;
 
   /* Glass effects */
-  --glass-bg: rgba(17, 17, 17, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.06);
-  --glass-glow: rgba(107, 159, 212, 0.08);
+  --glass-bg: rgba(0, 0, 0, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-glow: rgba(123, 168, 214, 0.08);
 
   /* Timeline */
   --timeline-line: rgba(255, 255, 255, 0.08);
-  --timeline-dot: #6b9fd4;
-  --timeline-dot-glow: rgba(107, 159, 212, 0.25);
+  --timeline-dot: #7ba8d6;
+  --timeline-dot-glow: rgba(123, 168, 214, 0.25);
 
   /* Card shimmer */
   --shimmer-start: transparent;
-  --shimmer-mid: rgba(107, 159, 212, 0.08);
+  --shimmer-mid: rgba(123, 168, 214, 0.08);
   --shimmer-end: transparent;
 
   /* Aurora */
@@ -179,5 +179,5 @@
   --aurora-4: #1e3a5f;
 
   /* Separator grid */
-  --separator-line: rgba(255, 255, 255, 0.06);
+  --separator-line: rgba(255, 255, 255, 0.08);
 }

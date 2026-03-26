@@ -19,7 +19,7 @@ export default function HomeView() {
       className="flex flex-col gap-10 md:gap-14 w-full pb-16"
     >
       <Hero />
-      <Separator />
+      <Separator showHint />
       <ProjectsList />
       <Separator />
       <Skills />

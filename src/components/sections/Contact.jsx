@@ -13,48 +13,36 @@ export default function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="relative w-full rounded-2xl border border-border/60 bg-surface/50 overflow-hidden"
+        className="relative w-full rounded-xl border border-border/60 bg-surface/50 overflow-hidden"
       >
-        {/* Decorative grid background */}
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: `
-              linear-gradient(var(--ink-blue) 1px, transparent 1px),
-              linear-gradient(90deg, var(--ink-blue) 1px, transparent 1px)
-            `,
-            backgroundSize: '32px 32px',
-          }}
-        />
-
         {/* Content */}
-        <div className="relative z-10 flex flex-col items-center text-center px-8 py-16 md:py-20 gap-6">
+        <div className="relative z-10 flex flex-col items-center text-center px-6 py-12 md:py-14 gap-5">
           <motion.div
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
             transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.2 }}
-            className="w-14 h-14 rounded-2xl flex items-center justify-center"
+            className="w-12 h-12 rounded-xl flex items-center justify-center"
             style={{ background: 'var(--ink-blue)' }}
           >
-            <PaperPlaneTilt weight="fill" className="w-6 h-6 text-white" />
+            <PaperPlaneTilt weight="fill" className="w-5 h-5 text-white" />
           </motion.div>
 
-          <div className="flex flex-col gap-2 max-w-md">
-            <h2 className="text-2xl md:text-3xl font-heading tracking-tight" style={{ color: 'var(--ink-blue)' }}>
+          <div className="flex flex-col gap-1.5 max-w-sm">
+            <h2 className="text-xl md:text-2xl font-heading tracking-tight" style={{ color: 'var(--ink-blue)' }}>
               Let's Work Together
             </h2>
             <p className="text-sm text-muted leading-relaxed">
-              I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Drop me a line!
+              Open to new projects, creative ideas, and opportunities. Drop me a line!
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-3 mt-2">
+          <div className="flex flex-col sm:flex-row items-center gap-2.5">
             <motion.a
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               href={`mailto:${hero.email}`}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white text-sm font-medium transition-opacity hover:opacity-90 shadow-sm"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white text-sm font-medium transition-opacity hover:opacity-90 shadow-sm"
               style={{ background: 'var(--ink-blue)' }}
             >
               Get in Touch
@@ -66,14 +54,14 @@ export default function Contact() {
                 href={hero.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border/60 text-foreground/70 hover:text-foreground hover:border-border-heavy text-sm font-medium transition-all"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border/60 text-foreground/70 hover:text-foreground hover:border-border-heavy text-sm font-medium transition-all"
               >
                 Connect on LinkedIn
               </a>
             )}
           </div>
 
-          <p className="text-xs text-muted-light font-mono mt-2">{hero.email}</p>
+          <p className="text-xs text-muted-light font-mono">{hero.email}</p>
         </div>
       </motion.div>
     </section>

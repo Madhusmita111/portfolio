@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { Sun, Moon, FileText } from '@phosphor-icons/react';
 import { portfolioData } from '../data/portfolioData';
-import CVModal from './CVModal';
 import { useTheme } from '../context/ThemeContext';
 
 export default function Header() {
   const { scrollY } = useScroll();
-  const [isCVOpen, setIsCVOpen] = useState(false);
   
   const nameOpacity = useTransform(scrollY, [200, 250], [0, 1]);
   const nameY = useTransform(scrollY, [200, 250], [10, 0]);
@@ -18,7 +16,7 @@ export default function Header() {
     scrollY,
     [0, 50],
     theme === 'dark' 
-      ? ['rgba(10, 10, 10, 0.4)', 'rgba(10, 10, 10, 0.80)']
+      ? ['rgba(0, 0, 0, 0.4)', 'rgba(0, 0, 0, 0.85)']
       : ['rgba(255, 255, 255, 0.4)', 'rgba(255, 255, 255, 0.80)']
   );
   
@@ -76,23 +74,19 @@ export default function Header() {
             </button>
 
             {/* Resume Button */}
-            <button
-              onClick={() => setIsCVOpen(true)}
+            <a
+              href="/pdf/MadhusmitaCV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-1.5 h-8 px-3 rounded-full hover:bg-foreground/5 text-xs font-medium text-foreground/60 hover:text-foreground transition-all duration-200 active:scale-95"
             >
               <FileText weight="bold" className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Resume</span>
               <span className="sm:hidden">CV</span>
-            </button>
+            </a>
           </div>
         </motion.header>
       </div>
-
-      <CVModal 
-        isOpen={isCVOpen} 
-        onClose={() => setIsCVOpen(false)} 
-        cvUrl="/pdf/Data CV.pdf" 
-      />
     </>
   );
 }
