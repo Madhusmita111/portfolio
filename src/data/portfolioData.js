@@ -49,24 +49,6 @@ export const portfolioData = {
   }
   ,
   projects: [
-    // {
-    //   title: "Dowel",
-    //   // date: "May – July 2025",
-    //   tech: ["Python", "Flask", "Scikit-learn", "XGBoost", "Pandas", "NumPy", "REST API"],
-    //   image: "/projects/url-checker.png",
-    //   points: [
-    //     "Developed a machine learning–based web application to detect and classify malicious URLs for phishing prevention",
-    //     "Designed a feature extraction pipeline generating 30+ lexical, host-based and other attributes from 70K+ URLs",
-    //     "Engineered 30+ lexical and domain-based features from 70K+ URLs",
-    //     "Trained and evaluated multiple ML models (Random Forest, XGBoost, SVM, Logistic Regression, KNN)",
-    //     "Achieved up to 97% accuracy",
-    //     "Evaluated model using precision, recall, F1-score, and cross-validation",
-    //     "Deployed the model as a scalable REST API using Flask",
-    //     "Enabled real-time URL classification through a web interface"
-    //   ],
-    //   liveLink: "#",
-    //   githubLink: "https://github.com/Madhusmita111/smart-URL-safety-checker"
-    // },
     {
       title: "Dowel",
       date: "March 2026",
@@ -173,7 +155,7 @@ export const portfolioData = {
     {
       institution: "Lovely Professional University",
       degree: "Bachelor of Technology (B.Tech.) in Computer Science Engineering",
-      // grade: "CGPA: 7.83",
+      grade: "CGPA: 7.83",
       date: "2023 – Present"
     }
   ],
