@@ -70,13 +70,15 @@ export const portfolioData = {
     {
       title: "Dowel",
       date: "March 2026",
-      tech: ["Power BI", "Data Analytics", "Data Modelling"],
+      tech: ["Python", "LLM API", "LangChain", "FastAPI", "Pandas", "Numpy"],
       thumbnail: "",
       image: "/projects/dowel.png",
       points: [
-        "Developed a platform that translates natural language queries into executable SQL, allowing non-technical users to extract insights from Excel, CSV, databases, APIs, and web data.",
-        "Implemented a pipeline for schema understanding and model selection. It utilizes Prophet and XGBoost for prediction, and Isolation Forest for anomaly detection to generate data-driven insights.",
-        "Integrated probabilistic \"what-if\" analysis using Monte Carlo simulations. Built interactive dashboards featuring real-time alerts to enable faster decision-making and proactive anomaly detection."
+        "Developed Dowel, a multi-model agentic AI system that autonomously plans, executes, and manages complex tasks",
+        "Implemented dynamic model selection, enabling the system to choose the best AI model based on task requirements.",
+        "Built intelligent agents capable of reasoning, task decomposition, and workflow execution."
+        "Designed a modular and scalable architecture, allowing easy integration of new models, tools, and APIs."
+        "Improved system reliability with context handling, memory integration, and fallback mechanisms."
       ],
       liveLink: "#",
       githubLink: "#"
@@ -114,7 +116,7 @@ export const portfolioData = {
         "Built responsive UI using HTML, CSS, JavaScript"
       ],
       liveLink: "#",
-      githubLink: "#"
+      githubLink: "https://github.com/Madhusmita111/What2Wear-AI-chatbot"
     },
     {
       title: "Crime Pattern Analysis",
