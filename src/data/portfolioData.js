@@ -157,7 +157,7 @@ export const portfolioData = {
     {
       institution: "Lovely Professional University",
       degree: "Bachelor of Technology (B.Tech.) in Computer Science Engineering",
-      grade: "CGPA: 7.93",
+      grade: "CGPA: 7.83",
       date: "2023 – Present"
     },
 
