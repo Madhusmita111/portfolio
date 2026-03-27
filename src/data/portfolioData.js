@@ -51,7 +51,7 @@ export const portfolioData = {
   projects: [
     {
       title: "Dowel",
-      date: "March 2026",
+      // date: "March 2026",
       tech: ["Python", "LLM API", "LangChain", "FastAPI", "Pandas", "Numpy"],
       thumbnail: "",
       image: "/projects/dowel.png",
@@ -63,7 +63,7 @@ export const portfolioData = {
         "Improved system reliability with context handling, memory integration, and fallback mechanisms."
       ],
       liveLink: "#",
-      githubLink: "#"
+      githubLink: "https://github.com/Madhusmita111/Dowel"
     },
     {
       title: "Smart URL Safety Checker",
