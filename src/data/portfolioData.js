@@ -58,8 +58,8 @@ export const portfolioData = {
       points: [
         "Developed Dowel, a multi-model agentic AI system that autonomously plans, executes, and manages complex tasks",
         "Implemented dynamic model selection, enabling the system to choose the best AI model based on task requirements.",
-        "Built intelligent agents capable of reasoning, task decomposition, and workflow execution."
-        "Designed a modular and scalable architecture, allowing easy integration of new models, tools, and APIs."
+        "Built intelligent agents capable of reasoning, task decomposition, and workflow execution.",
+        "Designed a modular and scalable architecture, allowing easy integration of new models, tools, and APIs.",
         "Improved system reliability with context handling, memory integration, and fallback mechanisms."
       ],
       liveLink: "#",
