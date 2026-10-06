@@ -564,7 +564,23 @@ export const portfolioData = {
     ],
     liveLink: "#",
     githubLink: "https://github.com/Madhusmita111/Analyzing-Crime-Data-for-City-Safety"
-  }
+  },
+
+  {
+      title: "Olympic Dashboard",
+      date: "April 2025",
+      tech: ["Excel"],
+      thumbnail: "/projects/thumbnail.jpg",
+      image: "/projects/olympics.jpeg",
+      points: [
+        "Developed a comprehensive Excel analytics dashboard evaluating historical Olympic athletic performance across nations and disciplines.",
+        "Applied Power Query for automated multi-source ingestion, schema normalization, and data sanitization.",
+        "Formulated dynamic multi-dimensional Pivot Tables utilizing GETPIVOTDATA and custom calculated measures.",
+        "Produced automated visual summaries and medal efficiency indices across 120+ participating committees."
+      ],
+      liveLink: "#",
+      githubLink: "https://github.com/Madhusmita111/Olympic-Data-Analysis"
+    }
 ],
   // books: [
   //   {
@@ -670,7 +686,7 @@ export const portfolioData = {
     {
       name: "Agentic AI Certified Foundations Associate",
       provider: "Oracle",
-      icon: "/icons/oracle.jpeg",
+      icon: "/icons/oracle.svg",
       link: "/certificates/oraclecertificate.jpeg"
     },
     {
