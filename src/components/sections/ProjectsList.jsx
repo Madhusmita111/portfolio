@@ -1,15 +1,16 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import Section from '../Section';
 import { portfolioData } from '../../data/portfolioData';
-import { ArrowUpRight, GithubLogo, X } from '@phosphor-icons/react';
+import { ArrowUpRight, GithubLogo, X, Database, Sparkle, ShieldCheck, ChartLineUp, Cpu, Code, ArrowRight } from '@phosphor-icons/react';
 
 // Tech Icon Mapper
 const getTechIcon = (tech) => {
   const map = {
     'python': 'python/python-original.svg',
     'flask': 'flask/flask-original.svg',
+    'fastapi': 'fastapi/fastapi-original.svg',
     'scikit-learn': 'scikitlearn/scikitlearn-original.svg',
     'pandas': 'pandas/pandas-original.svg',
     'numpy': 'numpy/numpy-original.svg',
@@ -17,63 +18,36 @@ const getTechIcon = (tech) => {
     'html/css': 'html5/html5-original.svg',
     'matplotlib': 'matplotlib/matplotlib-original.svg',
     'c++': 'cplusplus/cplusplus-original.svg',
-    'xgboost': 'python/python-original.svg' // fallback
+    'docker': 'docker/docker-original.svg',
+    'kubernetes': 'kubernetes/kubernetes-plain.svg',
+    'apache kafka': 'apachekafka/apachekafka-original.svg',
+    'kafka': 'apachekafka/apachekafka-original.svg',
+    'apache spark': 'apachespark/apachespark-original.svg',
+    'spark': 'apachespark/apachespark-original.svg',
+    'apache iceberg': 'apache/apache-original.svg',
+    'iceberg': 'apache/apache-original.svg',
+    'terraform': 'terraform/terraform-original.svg',
+    'react': 'react/react-original.svg',
+    'figma': 'figma/figma-original.svg',
+    'postgresql': 'postgresql/postgresql-original.svg',
+    'xgboost': 'python/python-original.svg',
+    'langchain': 'python/python-original.svg'
   };
   const key = tech.toLowerCase();
   return map[key] ? `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${map[key]}` : null;
 };
 
-// Component for a single overlapping tech icon
-const TechIconPill = ({ tech, index }) => {
-  const iconUrl = getTechIcon(tech);
-  const initials = tech.substring(0, 1).toUpperCase();
 
-  return (
-    <motion.div
-      variants={{
-        initial: { y: 0 },
-        hover: { y: -4, transition: { type: "spring", stiffness: 400, damping: 12, delay: index * 0.05 } }
-      }}
-      className="w-6 h-6 rounded-full border-2 border-background bg-surface/80 flex items-center justify-center shrink-0 overflow-hidden relative shadow-sm"
-      style={{ zIndex: 10 - index }}
-      title={tech}
-    >
-      {iconUrl ? (
-        <img src={iconUrl} alt={tech} className="w-3.5 h-3.5 object-contain" />
-      ) : (
-        <span className="text-[9px] font-bold text-muted">{initials}</span>
-      )}
-    </motion.div>
-  );
+const ProjectIcon = ({ iconType }) => {
+  switch (iconType) {
+    case 'Database': return <Database weight="duotone" className="w-5 h-5 text-ink dark:text-ink-light" />;
+    case 'Sparkle': return <Sparkle weight="duotone" className="w-5 h-5 text-ink dark:text-ink-light" />;
+    case 'ShieldCheck': return <ShieldCheck weight="duotone" className="w-5 h-5 text-ink dark:text-ink-light" />;
+    case 'ChartLineUp': return <ChartLineUp weight="duotone" className="w-5 h-5 text-ink dark:text-ink-light" />;
+    case 'Cpu': return <Cpu weight="duotone" className="w-5 h-5 text-ink dark:text-ink-light" />;
+    default: return <Code weight="duotone" className="w-5 h-5 text-ink dark:text-ink-light" />;
+  }
 };
-
-/* ── Hover Tooltip ── */
-function ProjectTooltip({ project, x, y, visible }) {
-  return createPortal(
-    <AnimatePresence>
-      {visible && (
-        <motion.div
-          initial={{ opacity: 0, y: 8, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: 8, scale: 0.95 }}
-          transition={{ duration: 0.15 }}
-          style={{ left: x, top: y }}
-          className="fixed z-50 pointer-events-none w-auto max-w-[280px] p-3.5 rounded-xl bg-tooltip text-foreground shadow-lg border border-tooltip-border"
-        >
-          <div className="flex flex-wrap gap-1.5 mb-2.5">
-            {project.tech.map((t, i) => (
-              <span key={i} className="text-[10px] font-medium bg-foreground/5 dark:bg-foreground/10 px-2 py-0.5 rounded-full">
-                {t}
-              </span>
-            ))}
-          </div>
-          <p className="text-[11px] opacity-50 text-center font-medium whitespace-nowrap">Click card to view details</p>
-        </motion.div>
-      )}
-    </AnimatePresence>,
-    document.body
-  );
-}
 
 /* ── Project Modal (Geist Design) ── */
 function ProjectModal({ project, isOpen, onClose }) {
@@ -104,9 +78,14 @@ function ProjectModal({ project, isOpen, onClose }) {
           >
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 md:py-5 border-b border-border/40 shrink-0 bg-background/80 backdrop-blur-md">
-              <h3 className="text-xl md:text-2xl font-heading tracking-tight" style={{ color: 'var(--ink-blue)' }}>
-                {project.title}
-              </h3>
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-lg bg-ink/10 dark:bg-ink-light/10 border border-ink/20 flex items-center justify-center shrink-0">
+                  <ProjectIcon iconType={project.iconType} />
+                </div>
+                <h3 className="text-xl md:text-2xl font-heading tracking-tight" style={{ color: 'var(--ink-blue)' }}>
+                  {project.title}
+                </h3>
+              </div>
               <button
                 onClick={onClose}
                 className="w-8 h-8 rounded-full bg-surface hover:bg-foreground/5 flex items-center justify-center text-foreground/60 hover:text-foreground transition-all shrink-0 ml-4 border border-border/60"
@@ -141,16 +120,15 @@ function ProjectModal({ project, isOpen, onClose }) {
                 </div>
               </div>
 
-              <div className="w-full aspect-video md:aspect-2/1 rounded-lg md:rounded-xl overflow-hidden border border-border bg-surface shrink-0">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              {/* Project Summary Box (Picture removed) */}
+              {project.summary && (
+                <div className="p-4 rounded-xl bg-surface border border-border/50 text-[14px] md:text-[15px] text-foreground/85 leading-relaxed font-normal">
+                  {project.summary}
+                </div>
+              )}
 
               {/* Bullet Points Description */}
-              <div className="flex flex-col gap-3 pt-2">
+              <div className="flex flex-col gap-3 pt-1">
                 {project.points.map((point, i) => (
                   <div key={i} className="flex items-start gap-3 w-full">
                     <span className="mt-[9px] w-[5px] h-[5px] rounded-full shrink-0" style={{ background: 'var(--ink-blue)' }} />
@@ -192,77 +170,103 @@ function ProjectModal({ project, isOpen, onClose }) {
   );
 }
 
-/* ── Project Card ── */
+/* ── Project Card (Picture-free, inspired by bengregoryjohn.in) ── */
 function ProjectCard({ project, index, onClick }) {
-  const cardRef = useRef(null);
-  const [hoveredTech, setHoveredTech] = useState(false);
-  const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
-
-  const handleMouseMoveTech = (e) => {
-    setTooltipPos({ x: e.clientX + 16, y: e.clientY + 16 });
-  };
-
   return (
-    <>
-      <motion.div
-        ref={cardRef}
-        initial="initial"
-        whileInView="inView"
-        whileHover="hover"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={{
-          initial: { opacity: 0, y: 20 },
-          inView: { opacity: 1, y: 0, transition: { duration: 0.5, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] } },
-        }}
-        onClick={() => onClick(project)}
-        className="group relative rounded-lg bg-card hover:bg-card-hover border border-card-border hover:border-card-border-hover transition-colors duration-300 overflow-visible cursor-pointer flex flex-col"
-      >
-        <div className="w-full h-48 overflow-hidden bg-surface rounded-lg shrink-0 relative shadow-md shadow-foreground/5">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
-          />
-        </div>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.45, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
+      onClick={() => onClick(project)}
+      className="group relative rounded-xl bg-card hover:bg-card-hover border border-card-border hover:border-card-border-hover transition-all duration-300 overflow-hidden cursor-pointer flex flex-col justify-between hover:shadow-xl hover:shadow-ink/5"
+    >
+      {/* Top subtle accent stripe */}
+      <div className="h-1 w-full bg-gradient-to-r from-ink/30 via-ink to-ink/30 opacity-40 group-hover:opacity-100 transition-opacity" />
 
-        <div className="px-4 py-3 flex items-center justify-between gap-3 min-h-[56px] overflow-hidden rounded-lg shadow-sm shadow-foreground/5">
-          <div className="flex-1 min-w-0 pr-2">
-            <h3 className="text-[15px] font-semibold tracking-tight text-foreground/90 group-hover:text-foreground leading-snug truncate relative inline-block max-w-full">
-              {project.title}
-            </h3>
+      <div className="p-5 sm:p-6 flex flex-col flex-1 justify-between gap-5">
+        <div>
+          {/* Header row: Icon & Date Pill */}
+          <div className="flex items-center justify-between gap-3 mb-4">
+            <div className="w-10 h-10 rounded-xl bg-ink/10 dark:bg-ink-light/10 border border-ink/20 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+              <ProjectIcon iconType={project.iconType} />
+            </div>
+            <span className="text-xs font-mono text-muted-light bg-surface px-2.5 py-1 rounded-full border border-border/40">
+              {project.date}
+            </span>
           </div>
-          
-          <div 
-             className="flex -space-x-2 shrink-0 pr-1 py-1"
-             onMouseEnter={(e) => { e.stopPropagation(); setHoveredTech(true); }}
-             onMouseLeave={(e) => { e.stopPropagation(); setHoveredTech(false); }}
-             onMouseMove={(e) => { e.stopPropagation(); handleMouseMoveTech(e); }}
-          >
-            {project.tech.slice(0, 4).map((t, i) => (
-               <TechIconPill key={i} tech={t} index={i} />
-            ))}
-            {project.tech.length > 4 && (
-               <motion.div
-                  variants={{
-                    initial: { y: 0 },
-                    hover: { y: -4, transition: { type: "spring", stiffness: 400, damping: 12, delay: 4 * 0.05 } }
-                  }}
-                  className="w-6 h-6 rounded-full border-2 border-background bg-border/40 flex items-center justify-center shrink-0 z-0 relative shadow-sm"
-               >
-                 <span className="text-[9px] font-bold text-muted">+{project.tech.length - 4}</span>
-               </motion.div>
-            )}
-           </div>
-        </div>
-      </motion.div>
 
-      <ProjectTooltip
-        project={project}
-        x={tooltipPos.x}
-        y={tooltipPos.y}
-        visible={hoveredTech}
-      />
-    </>
+          {/* Title */}
+          <h3 className="text-base md:text-lg font-semibold tracking-tight text-foreground group-hover:text-ink dark:group-hover:text-ink-light transition-colors mb-2">
+            {project.title}
+          </h3>
+
+          {/* 1-2 sentence description */}
+          <p className="text-sm text-muted leading-relaxed font-normal line-clamp-3">
+            {project.summary || (project.points && project.points[0])}
+          </p>
+        </div>
+
+        <div>
+          {/* Tech stack pills */}
+          <div className="flex flex-wrap gap-1.5 mb-5 pt-1">
+            {project.tech.slice(0, 5).map((t, i) => {
+              const iconUrl = getTechIcon(t);
+              return (
+                <span
+                  key={i}
+                  className="inline-flex items-center gap-1.5 text-[11px] font-medium px-2.5 py-1 rounded-md bg-surface border border-border/40 text-foreground/75"
+                >
+                  {iconUrl && (
+                    <img src={iconUrl} alt="" className="w-3 h-3 object-contain inline-block" />
+                  )}
+                  {t}
+                </span>
+              );
+            })}
+            {project.tech.length > 5 && (
+              <span className="text-[11px] font-medium px-2 py-1 rounded-md bg-surface border border-border/40 text-muted-light">
+                +{project.tech.length - 5}
+              </span>
+            )}
+          </div>
+
+          {/* Card footer links */}
+          <div className="pt-3 border-t border-border/30 flex items-center justify-between gap-2 text-xs">
+            <div className="flex items-center gap-3">
+              {project.githubLink && project.githubLink !== '#' && (
+                <a
+                  href={project.githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="inline-flex items-center gap-1.5 font-medium text-muted hover:text-foreground transition-colors"
+                >
+                  <GithubLogo weight="fill" className="w-3.5 h-3.5" />
+                  <span>Code</span>
+                </a>
+              )}
+              {project.liveLink && project.liveLink !== '#' && (
+                <a
+                  href={project.liveLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="inline-flex items-center gap-1 font-medium text-muted hover:text-foreground transition-colors"
+                >
+                  <ArrowUpRight weight="bold" className="w-3.5 h-3.5" />
+                  <span>Live</span>
+                </a>
+              )}
+            </div>
+
+            <span className="inline-flex items-center gap-1 text-[11px] font-medium text-muted-light group-hover:text-ink dark:group-hover:text-ink-light transition-colors">
+              Details <ArrowRight weight="bold" className="w-3 h-3" />
+            </span>
+          </div>
+        </div>
+      </div>
+    </motion.div>
   );
 }
 

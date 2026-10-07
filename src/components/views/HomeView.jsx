@@ -1,11 +1,13 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import Hero from '../sections/Hero';
+import Experience from '../sections/Experience';
 import ProjectsList from '../sections/ProjectsList';
-import Resume from '../sections/Resume';
 import Skills from '../sections/Skills';
-import Certificates from '../sections/Certificates';
+import Resume from '../sections/Resume';
+import Bookshelf from '../sections/Bookshelf';
 import Achievements from '../sections/Achievements';
+import Certificates from '../sections/Certificates';
 import Contact from '../sections/Contact';
 import Separator from '../Separator';
 
@@ -22,9 +24,11 @@ export default function HomeView() {
       <Separator showHint />
       <ProjectsList />
       <Skills />
-      <Resume />
       <Achievements />
+      <Experience />
+      <Resume />
       <Certificates />
+      <Bookshelf />
       <Contact />
     </motion.div>
   );

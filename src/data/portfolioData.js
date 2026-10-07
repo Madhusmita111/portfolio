@@ -1,205 +1,3 @@
-// export const portfolioData = {
-//   hero: {
-//     name: "Madhusmita Talukdar",
-//     roles: ["Aspiring Data Scientist", "Agentic AI Developer", "Machine Learning Engineer"],
-//     avatar: "/images/avatar.png",
-//     email: "tmadhusmita011@gmail.com",
-//     linkedin: "https://www.linkedin.com/in/madhusmitatalukdar",
-//     github: "https://github.com/Madhusmita111",
-//     location: "Assam, India"
-//   },
-//   about: {
-//     tagline: "Building Intelligent Systems with Data & AI",
-
-//     description: "Computer Science student specializing in AI and data science, creating machine learning systems and agentic platforms that turn complex data into predictive insights and real-world solutions."
-//   },
-//   skills: {
-//     "Languages": [
-//       "Python",
-//       "SQL",
-//       "C++",
-//       "Bash Scripting"
-//     ],
-//     "Machine Learning": [
-//       "Scikit-learn",
-//       "TensorFlow",
-//       "PyTorch",
-//       "Computer Vision",
-//       "NLP"
-//     ],
-//     "Data Tools": [
-//       "Pandas",
-//       "NumPy",
-//       "Power BI",
-//       "Excel"
-//     ],
-//     "DevOps": [
-//       "Docker",
-//       "Git",
-//       "MLflow"
-//     ],
-//     "Frameworks": [
-//       "Flask",
-//       "FastAPI",
-//       "Jupyter",
-//       "Google Colab",
-//       "Matplotlib",
-//       "Seaborn"
-//     ]
-//   }
-//   ,
-//   projects: [
-//     {
-//       title: "Dowel",
-//       // date: "March 2026",
-//       tech: ["Python", "LLM API", "LangChain", "FastAPI", "Pandas", "Numpy"],
-//       thumbnail: "",
-//       image: "/projects/dowel.png",
-//       points: [
-//         "Developed Dowel, a multi-model agentic AI system that autonomously plans, executes, and manages complex tasks",
-//         "Implemented dynamic model selection, enabling the system to choose the best AI model based on task requirements.",
-//         "Built intelligent agents capable of reasoning, task decomposition, and workflow execution.",
-//         "Designed a modular and scalable architecture, allowing easy integration of new models, tools, and APIs.",
-//         "Improved system reliability with context handling, memory integration, and fallback mechanisms."
-//       ],
-//       liveLink: "#",
-//       githubLink: "https://github.com/Madhusmita111/Dowel"
-//     },
-//     {
-//       title: "Smart URL Safety Checker",
-//       // date: "May – July 2025",
-//       tech: ["Python", "Flask", "Scikit-learn", "XGBoost", "Pandas", "NumPy", "REST API"],
-//       thumbnail: "/projects/thumbnail.jpg",
-//       image: "/projects/url-checker.png",
-//       points: [
-//         "Developed a machine learning–based web application to detect and classify malicious URLs for phishing prevention",
-//         "Designed a feature extraction pipeline generating 30+ lexical, host-based and other attributes from 70K+ URLs",
-//         "Engineered 30+ lexical and domain-based features from 70K+ URLs",
-//         "Trained and evaluated multiple ML models (Random Forest, XGBoost, SVM, Logistic Regression, KNN)",
-//         "Achieved up to 97% accuracy",
-//         "Evaluated model using precision, recall, F1-score, and cross-validation",
-//         "Deployed the model as a scalable REST API using Flask",
-//         "Enabled real-time URL classification through a web interface"
-//       ],
-//       liveLink: "#",
-//       githubLink: "https://github.com/Madhusmita111/smart-URL-safety-checker"
-//     },
-//     {
-//       title: "What2Wear AI Chatbot",
-//       // date: "May 2025",
-//       tech: ["Python", "JavaScript", "HTML/CSS", "API Integration"],
-//       thumbnail: "/projects/thumbnail.jpg",
-//       image: "/projects/what2wear.png",
-//       points: [
-//         "Implemented a rule-based recommendation engine for outfit suggestions",
-//         "Integrated external weather API and user preferences",
-//         "Improved recommendation relevance to 92%",
-//         "Achieved 30% faster response time",
-//         "Built responsive UI using HTML, CSS, JavaScript"
-//       ],
-//       liveLink: "#",
-//       githubLink: "https://github.com/Madhusmita111/What2Wear-AI-chatbot"
-//     },
-//     {
-//       title: "Crime Pattern Analysis",
-//       // date: "2025",
-//       tech: ["Python", "Pandas", "NumPy", "Scikit-learn", "Matplotlib", "Seaborn", "GeoPandas", "Google Colab"],
-//       thumbnail: "/projects/thumbnail.jpg",
-//       image: "/projects/crime.jpeg",
-//       points: [
-//         "Processed and analyzed 250K+ crime records",
-//         "Performed preprocessing, cleaning, and feature engineering",
-//         "Reduced data noise by 35%",
-//         "Conducted temporal and geographical analysis",
-//         "Applied clustering techniques for hotspot detection",
-//         "Achieved Silhouette Score of 0.92",
-//         "Identified crime hotspots, risk zones, and patterns",
-//         "Created visualizations using Matplotlib and Seaborn"
-//       ],
-//       liveLink: "#",
-//       githubLink: "https://github.com/Madhusmita111/Analyzing-Crime-Data-for-City-Safety"
-//     },
-//     {
-//       title: "Reddit–Google Trends Engagement Analysis",
-//       // date: "December 2025",
-//       tech: ["Power BI", "Data Analytics", "Data Modelling"],
-//       thumbnail: "/projects/thumbnail.jpg",
-//       image: "/projects/reddit.jpeg",
-//       points: [
-//         "Built interactive Power BI dashboard integrating Google Trends and Reddit data",
-//         "Designed relational data models",
-//         "Implemented advanced DAX measures",
-//         "Calculated growth trends, engagement metrics, and time-based comparisons",
-//         "Performed correlation analysis",
-//         "Created KPI-driven visualizations for trend forecasting"
-//       ],
-//       liveLink: "#",
-//       githubLink: "https://github.com/Madhusmita111/powerbi-dashboard"
-//     },
-//     {
-//       title: "Olympic Dashboard",
-//       // date: "April 2025",
-//       tech: ["Excel", "Power Query", "Pivot Tables"],
-//       thumbnail: "/projects/thumbnail.jpg",
-//       image: "/projects/olympics.jpeg",
-//       points: [
-//         "Developed Excel analytics dashboard using Olympic data",
-//         "Applied Power Query for data extraction, transformation, normalization",
-//         "Designed data models using Pivot Tables",
-//         "Used calculated fields and GETPIVOTDATA",
-//         "Generated dynamic KPIs and automated reporting"
-//       ],
-//       liveLink: "#",
-//       githubLink: "https://github.com/Madhusmita111/Olympic-Data-Analysis"
-//     }
-//   ],
-//   education: [
-//     {
-//       institution: "Lovely Professional University",
-//       degree: "Bachelor of Technology (B.Tech.) in Computer Science Engineering",
-//       // grade: "CGPA: 7.83",
-//       date: "2023 – Present"
-//     },
-
-//     // {
-//     //   institution: "Spectrum Gurukul",
-//     //   degree: "Intermediate",
-//     //   grade: "92.6 %",
-//     //   // date: "2023 – Present"
-//     // }
-//   ],
-//   certificates: [
-//     {
-//       name: "SQL (Intermediate)",
-//       provider: "HackerRank",
-//       icon: "/icons/Hackerrank.svg",
-//       link: "/certificates/hackerrankcertificate.jpeg"
-//     },
-//     {
-//       name: "Human Computer Interaction",
-//       provider: "NPTEL",
-//       icon: "/icons/nptel.jpeg",
-//       link: "/certificates/nptelcertificate.jpeg"
-//     },
-//     {
-//       name: "The Bits and Bites of Computer Networking",
-//       provider: "Coursera x Google",
-//       icon: "/icons/coursera.svg",
-//       link: "/certificates/courseracertificate.jpeg"
-//     }
-//   ],
-//   awards: [
-//     {
-//       title: "Authored research paper on security implications of integrating Windows Copilot into OS",
-//       titleHtml: "Authored <span class='relative inline-block px-1 mx-0.5 transition-colors duration-300 z-10 group-hover:text-neutral-950 dark:group-hover:text-neutral-50'><span class='absolute inset-x-0 bottom-0 h-[3px] bg-indigo-400 transition-all duration-300 ease-out group-hover:h-full -z-10 rounded-sm opacity-70 group-hover:opacity-100'></span><span class='relative font-medium'>research paper</span></span> on security implications of integrating <span class='relative inline-block px-1 mx-0.5 transition-colors duration-300 z-10 group-hover:text-neutral-950 dark:group-hover:text-neutral-50'><span class='absolute inset-x-0 bottom-0 h-[3px] bg-sky-400 transition-all duration-300 ease-out group-hover:h-full -z-10 rounded-sm opacity-70 group-hover:opacity-100'></span><span class='relative font-medium'>Windows Copilot</span></span> into OS"
-//     },
-//     {
-//       title: "Core technical member and graphic designer in Cisco iGen community and Encrypt Edge",
-//       titleHtml: "Core technical member and <span class='relative inline-block px-1 mx-0.5 transition-colors duration-300 z-10 group-hover:text-neutral-950 dark:group-hover:text-neutral-50'><span class='absolute inset-x-0 bottom-0 h-[3px] bg-pink-400 transition-all duration-300 ease-out group-hover:h-full -z-10 rounded-sm opacity-70 group-hover:opacity-100'></span><span class='relative font-medium'>graphic designer</span></span> in <span class='relative inline-block px-1 mx-0.5 transition-colors duration-300 z-10 group-hover:text-neutral-950 dark:group-hover:text-neutral-50'><span class='absolute inset-x-0 bottom-0 h-[3px] bg-teal-400 transition-all duration-300 ease-out group-hover:h-full -z-10 rounded-sm opacity-70 group-hover:opacity-100'></span><span class='relative font-medium'>Cisco iGen</span></span> community and Encrypt Edge"
-//     }
-//   ]
-// };
-
 export const portfolioData = {
   hero: {
     name: "Madhusmita Talukdar",
@@ -236,7 +34,6 @@ export const portfolioData = {
     "Cloud & DevOps": [
       "Docker",
       "Kubernetes",
-      "Kafka",
       "Apache Spark",
       "Terraform",
       "Git",
@@ -270,51 +67,45 @@ export const portfolioData = {
   },
 
   experience: [
-  {
-    role: "Graphic Designer",
-    organization: "Cisco Student Club",
-    location: "Campus Chapter",
-    period: "2023 – 2024",
-    type: "Design & Creative Media",
-    summary: "Designed visual content and social media creatives for technical events and student initiatives.",
-    points: [
-      "Designed event posters, promotional graphics, banners, and digital branding assets for campus events.",
-      "Created social media content to strengthen event visibility and student engagement.",
-      "Collaborated with event teams to turn technical themes into clear and engaging visual content."
-    ],
-    skills: ["Figma", "Canva", "Visual Design", "Branding", "Social Media"]
-  },
+    {
+      role: "Graphic Designer",
+      organization: "Cisco Student Club",
+      location: "Campus Chapter",
+      period: "2023 – 2024",
+      type: "Design & Creative Media",
+      points: [
+        "Led creative direction and visual design for campus technical initiatives, producing digital branding, event posters, and promotional media.",
+        "Collaborated with technical leads on Figma and Canva to translate complex technology themes into engaging student content."
+      ],
+      skills: ["Figma", "Canva", "Visual Design", "Branding", "Social Media"]
+    },
 
-  {
-    role: "Public Speaker & Event Host",
-    organization: "EncryptEdge",
-    location: "Campus Community",
-    period: "2023 – 2024",
-    type: "Public Speaking & Community",
-    summary: "Hosted technical and community events, engaging students through public speaking, event moderation, and audience interaction.",
-    points: [
-      "Hosted and anchored technical events, community sessions, and student-focused programs.",
-      "Engaged audiences through event introductions, speaker interactions, Q&A sessions, and live discussions.",
-      "Worked with organizers to coordinate event flow and create an engaging experience for the campus community."
-    ],
-    skills: ["Public Speaking", "Event Hosting", "Event Coordination", "Audience Engagement", "Communication"]
-  },
+    {
+      role: "Public Speaker",
+      organization: "EncryptEdge",
+      location: "Campus Community",
+      period: "2023 – 2024",
+      type: "Public Speaking & Community",
+      points: [
+        "Anchored and hosted flagship technical events and speaker sessions, moderating live Q&A discussions for 2000+ attendees.",
+        "Coordinated event operations and audience engagement across campus programs to deliver seamless community experiences."
+      ],
+      skills: ["Public Speaking", "Event Hosting", "Event Coordination", "Audience Engagement", "Communication"]
+    },
 
-  {
-    role: "Field Volunteer & Educator",
-    organization: "GVM NGO | Project CRY",
-    location: "Field Operations",
-    period: "2024",
-    type: "Social Impact & Community",
-    summary: "Supported grassroots education and community-awareness initiatives through field outreach and stakeholder coordination.",
-    points: [
-      "Participated in field visits and educational activities across rural and semi-urban communities.",
-      "Conducted awareness and learning sessions for women and children on digital basics and everyday well-being.",
-      "Coordinated with local stakeholders and organizational teams to support effective execution of community initiatives."
-    ],
-    skills: ["Community Outreach", "Education", "Stakeholder Coordination", "Field Operations", "Communication"]
-  }
-],
+    {
+      role: "Field Volunteer & Educator",
+      organization: "GVM NGO | Project CRY",
+      location: "Field Operations",
+      period: "2024",
+      type: "Social Impact & Community",
+      points: [
+        "Conducted grassroots digital literacy and well-being awareness workshops for rural women and children.",
+        "Coordinated with local community stakeholders and field teams to ensure effective execution of outreach initiatives."
+      ],
+      skills: ["Community Outreach", "Education", "Stakeholder Coordination", "Field Operations", "Communication"]
+    }
+  ],
   // projects: [
   //   {
   //     title: "OpsPulse",
@@ -442,6 +233,8 @@ export const portfolioData = {
   {
     title: "OpsPulse",
     date: "2026",
+    summary: "Real-time lakehouse and operational intelligence platform integrating CDC, streaming analytics, machine learning, and cloud-native infrastructure.",
+    iconType: "Database",
     tech: [
       "Python",
       "FastAPI",
@@ -458,8 +251,6 @@ export const portfolioData = {
       "Prometheus",
       "Grafana"
     ],
-    thumbnail: "/projects/thumbnail.jpg",
-    image: "/projects/opspulse.png",
     points: [
       "Built a real-time operational intelligence platform for quick-commerce, combining CDC, streaming analytics, machine learning, and cloud-native infrastructure.",
       "Implemented a PostgreSQL → Debezium → Kafka → Spark → Apache Iceberg pipeline for continuously processing transactional changes into an analytics-ready lakehouse.",
@@ -473,6 +264,8 @@ export const portfolioData = {
   {
     title: "AI Business Intelligence Assistant",
     date: "2026",
+    summary: "AI-powered analytics assistant converting natural-language business queries into automated SQL, predictive models, and interactive KPI visualizations.",
+    iconType: "Sparkle",
     tech: [
       "Python",
       "LangChain",
@@ -485,8 +278,6 @@ export const portfolioData = {
       "XGBoost",
       "Prophet"
     ],
-    thumbnail: "/projects/thumbnail.jpg",
-    image: "/projects/ai-bi.png",
     points: [
       "Built an AI-powered business intelligence assistant that converts natural-language business questions into data-driven insights, analysis, and visualizations.",
       "Connected structured business data in PostgreSQL with analytical workflows using Pandas and machine learning models for forecasting, prediction, and trend analysis.",
@@ -500,6 +291,8 @@ export const portfolioData = {
   {
     title: "Smart URL Safety Checker",
     date: "May – July 2025",
+    summary: "Machine learning URL security application detecting malicious and phishing domains with 97% classification accuracy across 70K+ samples.",
+    iconType: "ShieldCheck",
     tech: [
       "Python",
       "Flask",
@@ -508,8 +301,6 @@ export const portfolioData = {
       "Pandas",
       "NumPy"
     ],
-    thumbnail: "/projects/thumbnail.jpg",
-    image: "/projects/url-checker.png",
     points: [
       "Built a machine learning application for detecting potentially malicious and phishing URLs from lexical and domain-level characteristics.",
       "Engineered 30+ URL features, including URL structure, domain characteristics, special-character patterns, and suspicious token indicators, across 70K+ URLs.",
@@ -523,6 +314,8 @@ export const portfolioData = {
   {
     title: "Reddit–Google Trends Engagement Analysis",
     date: "December 2025",
+    summary: "Interactive Power BI analytics solution and star-schema model analyzing 9,000+ posts to correlate search volume with community momentum.",
+    iconType: "ChartLineUp",
     tech: [
       "Python",
       "Pandas",
@@ -530,8 +323,6 @@ export const portfolioData = {
       "Power Query",
       "DAX"
     ],
-    thumbnail: "/projects/thumbnail.jpg",
-    image: "/projects/reddit.jpeg",
     points: [
       "Built an interactive Power BI analytics solution combining 9,000+ Reddit posts with Google Trends data to study relationships between search interest and community engagement.",
       "Designed a relational star-schema model in Power Query and transformed raw social and search data into analysis-ready dimensions and fact tables.",
@@ -545,6 +336,8 @@ export const portfolioData = {
   {
     title: "Crime Pattern Analysis",
     date: "2025",
+    summary: "Spatial-temporal clustering pipeline mining 250,000+ incident records to discover high-risk urban hotspots and temporal patterns.",
+    iconType: "Cpu",
     tech: [
       "Python",
       "Pandas",
@@ -554,8 +347,6 @@ export const portfolioData = {
       "Seaborn",
       "GeoPandas"
     ],
-    thumbnail: "/projects/thumbnail.jpg",
-    image: "/projects/crime.jpeg",
     points: [
       "Analyzed 250K+ urban crime records to identify temporal, geographic, and categorical patterns in reported incidents.",
       "Applied K-Means and DBSCAN clustering to identify geographic crime concentrations and recurring high-risk areas.",
@@ -564,23 +355,7 @@ export const portfolioData = {
     ],
     liveLink: "#",
     githubLink: "https://github.com/Madhusmita111/Analyzing-Crime-Data-for-City-Safety"
-  },
-
-  {
-      title: "Olympic Dashboard",
-      date: "April 2025",
-      tech: ["Excel"],
-      thumbnail: "/projects/thumbnail.jpg",
-      image: "/projects/olympics.jpeg",
-      points: [
-        "Developed a comprehensive Excel analytics dashboard evaluating historical Olympic athletic performance across nations and disciplines.",
-        "Applied Power Query for automated multi-source ingestion, schema normalization, and data sanitization.",
-        "Formulated dynamic multi-dimensional Pivot Tables utilizing GETPIVOTDATA and custom calculated measures.",
-        "Produced automated visual summaries and medal efficiency indices across 120+ participating committees."
-      ],
-      liveLink: "#",
-      githubLink: "https://github.com/Madhusmita111/Olympic-Data-Analysis"
-    }
+  }
 ],
   // books: [
   //   {
@@ -680,13 +455,25 @@ export const portfolioData = {
       degree: "Bachelor of Technology (B.Tech.) in Computer Science Engineering",
       grade: "CGPA: 8.07",
       date: "2023 – Present"
+    },
+    {
+      institution: "Spectrum Gurukul",
+      degree: "12th Standard",
+      grade: "Percentage: 92.6%",
+      // date: "2023 – Present"
+    },
+    {
+      institution: "Sankdardev Sishu Bidya Niketan",
+      degree: "10th Standard",
+      grade: "Percentage: 92.8%",
+      // date: "2023 – Present"
     }
   ],
   certificates: [
     {
       name: "Agentic AI Certified Foundations Associate",
       provider: "Oracle",
-      icon: "/icons/oracle.svg",
+      icon: "/icons/oracle.jpeg",
       link: "/certificates/oraclecertificate.jpeg"
     },
     {
@@ -708,6 +495,40 @@ export const portfolioData = {
       link: "/certificates/nptelcertificate.jpeg"
     }
   ],
+  achievements: [
+    {
+      title: "Authored Research Paper on OS Security & AI",
+      description: "Conducted security analysis and authored a research paper exploring the architectural, kernel, and privacy implications of integrating Windows Copilot into the OS.",
+      category: "Research & Publication",
+      iconType: "Article",
+      highlight: "Research Author",
+      date: "2025"
+    },
+    {
+      title: "Oracle Cloud Infrastructure 2024 Foundations Associate",
+      description: "Certified in Agentic AI foundations, covering autonomous multi-agent systems, reasoning loops, tool invocation, and LLM architecture.",
+      category: "Professional Certification",
+      iconType: "Certificate",
+      highlight: "Agentic AI Certified",
+      date: "2024"
+    },
+    {
+      title: "NPTEL & DeepLearning.AI Specializations",
+      description: "Completed rigorous academic coursework in Human-Computer Interaction (NPTEL) and Supervised Machine Learning (DeepLearning.AI x Coursera) with top-tier assessments.",
+      category: "Academic Honors",
+      iconType: "Trophy",
+      highlight: "Top Assessments",
+      date: "2024"
+    },
+    {
+      title: "Technical Community & Creative Leadership",
+      description: "Led visual design and event moderation across Cisco Student Club and EncryptEdge, anchoring campus tech events and creating high-impact digital branding.",
+      category: "Leadership & Community",
+      iconType: "Users",
+      highlight: "Campus Leader",
+      date: "2023 – 2024"
+    }
+  ],
   awards: [
     {
       title: "Authored research paper on security implications of integrating Windows Copilot into OS",
@@ -719,4 +540,3 @@ export const portfolioData = {
     // }
   ]
 };
-

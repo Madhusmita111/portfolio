@@ -38,9 +38,18 @@ export default function Header() {
           }}
           className="w-full max-w-3xl h-12 rounded-full backdrop-blur-md border transition-all duration-300 pointer-events-auto flex items-center justify-between px-5"
         >
-          <motion.div style={{ opacity: nameOpacity, y: nameY }} className="text-sm font-medium tracking-tight text-foreground truncate max-w-[50%]">
+          <motion.div style={{ opacity: nameOpacity, y: nameY }} className="text-sm font-medium tracking-tight text-foreground truncate max-w-[30%]">
             {portfolioData.hero.name}
           </motion.div>
+
+          <nav className="hidden md:flex items-center gap-1 mx-auto">
+            <a href="#projects" className="px-2.5 py-1 text-xs font-medium text-muted hover:text-foreground transition-colors rounded-full hover:bg-foreground/5">Projects</a>
+            <a href="#skills" className="px-2.5 py-1 text-xs font-medium text-muted hover:text-foreground transition-colors rounded-full hover:bg-foreground/5">Skills</a>
+            <a href="#achievements" className="px-2.5 py-1 text-xs font-medium text-muted hover:text-foreground transition-colors rounded-full hover:bg-foreground/5">Achievements</a>
+            <a href="#experience" className="px-2.5 py-1 text-xs font-medium text-muted hover:text-foreground transition-colors rounded-full hover:bg-foreground/5">Experience</a>
+            <a href="#contact" className="px-2.5 py-1 text-xs font-medium text-muted hover:text-foreground transition-colors rounded-full hover:bg-foreground/5">Contact</a>
+          </nav>
+
           <div className="flex items-center gap-1.5 ml-auto">
             {/* Theme Toggle */}
             <button

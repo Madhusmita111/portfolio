@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { portfolioData } from '../../data/portfolioData';
@@ -170,13 +170,33 @@ export default function Hero() {
           className="flex flex-col gap-5 w-full"
         >
           {/* Avatar */}
-          <motion.div variants={item} className="mb-2 flex items-center cursor-default">
-            <div className="relative shrink-0">
-              <img
-                src={hero.avatar}
-                alt={hero.name}
-                className="relative z-10 w-24 h-24 rounded-full object-cover shadow-sm bg-surface ring-1 ring-border"
-              />
+          <motion.div variants={item} className="mb-3 flex items-center cursor-default">
+            <div className="relative group shrink-0">
+              {/* Subtle ambient glow */}
+              <div className="absolute -inset-1.5 rounded-full bg-ink/20 dark:bg-ink-light/20 blur-xl opacity-60 dark:opacity-30 animate-pulse pointer-events-none" />
+
+              {/* Styled avatar container */}
+              <div className="relative w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full p-1.5 bg-surface/90 border-2 border-border/70 shadow-xl overflow-hidden group hover:border-ink/40 transition-colors duration-300">
+                <div className="w-full h-full rounded-full bg-surface overflow-hidden flex items-center justify-center relative border border-border/50">
+                  <img
+                    src={hero.avatar}
+                    alt={hero.name}
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-ink/5 dark:bg-ink-light/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                </div>
+              </div>
+
+              {/* Status pill badge inspired by bengregoryjohn.in */}
+              <div className="absolute -bottom-2 -right-1 sm:bottom-0 sm:right-0 bg-surface/95 dark:bg-surface/90 backdrop-blur-md px-3.5 py-1.5 rounded-full shadow-lg border border-border/70 flex items-center gap-2 select-none hover:-translate-y-0.5 transition-transform">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+                </span>
+                <span className="text-[12px] font-medium text-foreground/85 whitespace-nowrap">
+                  Open to Opportunities
+                </span>
+              </div>
             </div>
           </motion.div>
 
@@ -196,21 +216,25 @@ export default function Hero() {
           </motion.div>
 
           <motion.div variants={item} className="group text-[15px] text-muted leading-relaxed mt-2 font-normal cursor-default relative z-20 max-w-xl">
-            I am a Computer Science student focused on {' '}
-            <Highlight colorClass="bg-indigo-400">Data Science</Highlight> and {' '}
-            <Highlight colorClass="bg-purple-400">Machine Learning</Highlight>, with experience in {' '}
+            I am a Computer Science student bridging {' '}
+            <Highlight colorClass="bg-indigo-400">Data Science</Highlight>, {' '}
+            <Highlight colorClass="bg-purple-400">Machine Learning</Highlight>, and {' '}
+            <Highlight colorClass="bg-pink-400">Visual Design</Highlight>, with hands-on proficiency in {' '}
             <Highlight colorClass="bg-blue-400">
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" className="w-[16px] h-[16px] relative -top-px inline-block" /> Python
             </Highlight>, {' '}
             <Highlight colorClass="bg-emerald-400">
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL" className="w-[16px] h-[16px] relative -top-px inline-block" /> SQL
-            </Highlight>, and {' '}
+            </Highlight>, {' '}
             <Highlight colorClass="bg-sky-500">
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++" className="w-[16px] h-[16px] relative -top-px inline-block" /> C++
+            </Highlight>, and {' '}
+            <Highlight colorClass="bg-rose-400">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" alt="Figma" className="w-[15px] h-[15px] relative -top-px inline-block" /> Figma
             </Highlight>. I build {' '}
-            <span className="font-medium text-foreground">predictive models</span>, {' '}
-            <span className="font-medium text-foreground">data pipelines</span>, and {' '}
-            <span className="font-medium text-foreground">automation systems</span> that turn complex datasets into practical insights and scalable solutions.
+            <span className="font-medium text-foreground">intelligent agentic systems</span>, {' '}
+            <span className="font-medium text-foreground">scalable data pipelines</span>, and {' '}
+            <span className="font-medium text-foreground">compelling visual experiences</span> that translate complex engineering into intuitive, human-centered solutions.
           </motion.div>
 
           <motion.div variants={item} className="flex flex-wrap items-center gap-2.5 mt-4">
